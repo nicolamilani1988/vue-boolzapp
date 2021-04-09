@@ -92,27 +92,14 @@ function init(){
                 
             ],
             
-            names: [],
-            texts: [],
-            status: [],
-
+            
+            activeChat: null,
         },
 
         methods:{
-            getContactText: function(index){
-                this.texts = [];
-                this.status = [];
-                const messages = this.contacts[index]['messages'];
-                for (let i = 0;i<messages.length;i++){
-                    const message = messages[i];
-                    const text = message['text'];
-                    const status = message['status'];
-                    this.texts.push(text);
-                    this.status.push(status);
-                }
-                console.log(this.texts);
-                console.log(this.status);
-            }
+            getActiveChat: function(){
+                console.log("clic chat");
+            } 
         },
 
         
