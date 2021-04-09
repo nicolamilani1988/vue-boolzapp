@@ -93,28 +93,25 @@ function init(){
             ],
             
             names: [],
-            userTexts: [],
-            otherUserTexts: [],
+            texts: [],
+            status: [],
 
         },
 
         methods:{
-            getContactText: function(){
-                this.userTexts = [];
-                this.otherUserTexts = [];
-                const messages = this.contacts[0]['messages'];
+            getContactText: function(index){
+                this.texts = [];
+                this.status = [];
+                const messages = this.contacts[index]['messages'];
                 for (let i = 0;i<messages.length;i++){
                     const message = messages[i];
                     const text = message['text'];
                     const status = message['status'];
-                    if(status == "sent"){
-                        this.userTexts.push(text);
-                    } else {
-                        this.otherUserTexts.push(text);
-                    }
+                    this.texts.push(text);
+                    this.status.push(status);
                 }
-                console.log(this.userTexts);
-                console.log(this.otherUserTexts);
+                console.log(this.texts);
+                console.log(this.status);
             }
         },
 
