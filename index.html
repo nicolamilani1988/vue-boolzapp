@@ -23,9 +23,18 @@
         <nav id="contact-list">
             <!-- contatti -->
             <div class="contact" id="fabio" @click="getContactText">
-                CLICCA SUL GIALLO PER VEDERE I MESSAGGI
+                <span>{{contacts[0]['name']}}</span>
+                <img src="./img/michele.jpg" alt="" width="50px" height = "50px">
             </div>
-
+            <div class="contact" id="fabio" @click="getContactText">
+                <span>{{contacts[1]['name']}}</span>
+                <img src="./img/fabio.jpg" alt="" width="50px" height = "50px">
+            </div>
+            <div class="contact" :id="contacts[1]['name']" @click="getContactText" v-for="elem in contacts">
+                <span>{{contacts[1]['name']}}</span>
+                <img src="./img/fabio.jpg" alt="" width="50px" height = "50px">
+            </div>
+            
         </nav>
 
         <!-- chat centrale -->

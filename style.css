@@ -24,6 +24,9 @@ ul li{
     width: 100%;
     height: 50px;
     background-color: yellow;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
 }
 
 
