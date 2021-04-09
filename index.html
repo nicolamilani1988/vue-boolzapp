@@ -51,10 +51,10 @@
                     </ul>
                 </div>
             </section>
-            
+
             <!-- scrittura messaggi -->
             <section id="message-write">
-                <input type="text">
+                <input type="text" @keyup.enter="addText" v-model="newText">
             </section>
 
         </main>

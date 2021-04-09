@@ -94,12 +94,26 @@ function init(){
             
             
             activeChat: '',
+
+            newText: '',
         },
 
         methods:{
             getActiveChat: function(index){
                 
                 this.activeChat = this.contacts[index];
+                
+            },
+            addText: function(){
+                const messages = this.activeChat['messages'];
+                const data = new Date().toLocaleString();
+                const message = this.newText;
+                const newMessage = {
+                    date: data,
+                    text: message,
+                    status: "sent"
+                };
+                messages.push(newMessage);
                 
             }
         },
