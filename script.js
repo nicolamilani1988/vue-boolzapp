@@ -93,13 +93,15 @@ function init(){
             ],
             
             
-            activeChat: null,
+            activeChat: "Apri una chat",
         },
 
         methods:{
-            getActiveChat: function(){
-                console.log("clic chat");
-            } 
+            getActiveChat: function(index){
+                
+                this.activeChat = this.contacts[index];
+                
+            }
         },
 
         
