@@ -32,18 +32,12 @@
         <main>
             <!-- visualizzazione messaggi -->
             <section id="message-view">
-                <!-- parte sx msg interlocutore -->
+                <!-- parte messaggi interlocutore -->
                 <div>
                     <ul>
                         <li v-for="elem in texts">{{elem}}</li>
-                    </ul>
-                </div>
-                <!-- parte dx msg utente -->
-                <div>
-                    <ul>
-                        <li>msg1</li>
-                        <li>msg2</li>
-                        <li>msg3</li>
+                        <li class="user">utente</li>
+                        <li class="other-user">altro utente</li>
                     </ul>
                 </div>
             </section>

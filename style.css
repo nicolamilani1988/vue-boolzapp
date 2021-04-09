@@ -38,8 +38,15 @@ main{
     border: 1px solid green;
     height: 90vh;
     padding: 10px;
-    display: flex;
-    justify-content: space-between;
+}
+
+#message-view>div{
+    width: 60%;
+}
+
+.user{
+    text-align: right;
+    color: green;
 }
 
 /* regole sezione scrittura messaggi */
