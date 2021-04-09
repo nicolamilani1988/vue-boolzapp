@@ -41,10 +41,17 @@ main{
     border: 1px solid green;
     height: 90vh;
     padding: 10px;
+    background-image: url('./img/background.jpg');
 }
 
 #message-view>div{
     width: 60%;
+    margin:auto;
+}
+
+#message-view>div li{
+    border: 1px solid blue;
+    margin: 10px;
 }
 
 .sent{

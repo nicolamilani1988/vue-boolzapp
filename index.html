@@ -15,14 +15,18 @@
     <link rel="stylesheet" href="./style.css">
     <!-- my script -->
     <script src="./script.js"></script>
+</head>
+
 <body>
 
     <div id="app" class="container">
 
         <!-- parte contatti a sx -->
         <nav id="contact-list">
-            <!-- contatti -->
-            
+            <!-- barra ricerca contatti -->
+            <input type="text">
+
+            <!-- contatti -->          
             <div class="contact" :id="elem['name'].toLowerCase()" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
                 <span>{{elem['name']}}</span>
                 <img :src="'./img/pic'+elem.avatar+'.jpg'" alt="" width="50px" height = "50px">
@@ -37,7 +41,6 @@
                 <!-- parte messaggi -->
                 <div>
                     <ul>
-
                         <li v-for="(elem,index) in activeChat['messages']" :class="elem['status']">
 
                             <img v-if="elem['status'] == 'received'" :src="'./img/pic'+activeChat['avatar']+'.jpg'" alt="" width="50px" height = "50px">
@@ -45,14 +48,15 @@
                             <span>{{elem['text']}}</span>
                             
                         </li>
-
                     </ul>
                 </div>
             </section>
+            
             <!-- scrittura messaggi -->
             <section id="message-write">
                 <input type="text">
             </section>
+
         </main>
 
     </div>
