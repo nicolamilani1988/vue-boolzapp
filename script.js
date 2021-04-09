@@ -31,25 +31,30 @@ function init(){
                 //aggiungere altri utenti
             ],
 
-            texts: []
+            userTexts: [],
+            otherUserTexts: [],
 
         },
 
         methods:{
             getContactText: function(){
-                console.log("Incollare funzione mounted");
+                const messages = this.contacts[0]['messages'];
+                for (let i = 0;i<messages.length;i++){
+                    const message = messages[i];
+                    const text = message['text'];
+                    const status = message['status'];
+                    if(status == "sent"){
+                        this.userTexts.push(text);
+                    } else {
+                        this.otherUserTexts.push(text);
+                    }
+                }
+                console.log(this.userTexts);
+                console.log(this.otherUserTexts);
             }
         },
 
-        mounted(){ // da mettere tra method = getContactText
-            const messages = this.contacts[0]['messages'];
-            for (let i = 0;i<messages.length;i++){
-                const message = messages[i];
-                const text = message['text'];
-                this.texts.push(text);
-            }
-            console.log(this.texts);
-        }
+        
 
     })
 

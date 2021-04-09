@@ -23,7 +23,7 @@
         <nav id="contact-list">
             <!-- contatti -->
             <div class="contact" id="fabio" @click="getContactText">
-
+                CLICCA SUL GIALLO PER VEDERE I MESSAGGI
             </div>
 
         </nav>
@@ -35,9 +35,8 @@
                 <!-- parte messaggi interlocutore -->
                 <div>
                     <ul>
-                        <li v-for="elem in texts">{{elem}}</li>
-                        <li class="user">utente</li>
-                        <li class="other-user">altro utente</li>
+                        <li v-for="elem in userTexts" class="user">{{elem}}</li>
+                        <li v-for="elem in otherUserTexts">{{elem}}</li>
                     </ul>
                 </div>
             </section>
