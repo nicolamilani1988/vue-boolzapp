@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul li{
+    list-style-type: none;
+}
+
+.container{
+    display:flex;
+}
+
+/* regole navbar lista contatti */
+#contact-list{
+    width: 300px;
+    /* debug */
+    height: 100vh;
+    border: 1px solid red;
+}
+
+/* regole main */
+main{
+    flex-grow: 1;
+    border: 1px solid blue;
+   
+}
+/* regole sezione visualizzazione */
+#message-view{
+    border: 1px solid green;
+    height: 90vh;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#message-write{
+    background-color: lightblue;
+    height: 10vh;
+}
