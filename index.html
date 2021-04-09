@@ -30,8 +30,8 @@
                 <span>{{contacts[1]['name']}}</span>
                 <img src="./img/fabio.jpg" alt="" width="50px" height = "50px">
             </div>
-            <div class="contact" :id="contacts[1]['name']" @click="getContactText" v-for="elem in contacts">
-                <span>{{contacts[1]['name']}}</span>
+            <div class="contact" :id="elem['name'].toLowerCase()" @click="getContactText" v-for="elem in contacts">
+                <span>{{elem['name']}}</span>
                 <img src="./img/fabio.jpg" alt="" width="50px" height = "50px">
             </div>
             
