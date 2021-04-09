@@ -21,6 +21,10 @@
 
         <!-- parte contatti a sx -->
         <nav id="contact-list">
+            <!-- contatti -->
+            <div id="fabio" @click>
+
+            </div>
 
         </nav>
 
@@ -31,9 +35,9 @@
                 <!-- parte sx msg interlocutore -->
                 <div>
                     <ul>
-                        <li>msg1</li>
-                        <li>msg2</li>
-                        <li>msg3</li>
+                        <li v-for="(elem,index) in texts")>{{elem[index]}}</li>
+                        <li>{{contacts[0]['messages'][1]['text']}}</li>
+                        <li>{{contacts[0]['messages'][2]['text']}}</li>
                     </ul>
                 </div>
                 <!-- parte dx msg utente -->
