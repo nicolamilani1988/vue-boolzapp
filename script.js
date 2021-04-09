@@ -37,16 +37,11 @@ function init(){
 
         methods:{
             getContactText: function(){
-                for(let i=0;i<this.contacts.length;i++){
-                    const contact = this.contacts[i];
-                    const messages = contact['messages'];
-                    const text = messages[0]['text'];
-                    console.log(text);
-                }
+                console.log("Incollare funzione mounted");
             }
         },
 
-        mounted(){
+        mounted(){ // da mettere tra method = getContactText
             const messages = this.contacts[0]['messages'];
             for (let i = 0;i<messages.length;i++){
                 const message = messages[i];
