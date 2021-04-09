@@ -105,6 +105,7 @@ function init(){
                 
             },
             addText: function(){
+                
                 const messages = this.activeChat['messages'];
                 const data = new Date().toLocaleString();
                 const message = this.newText;
@@ -114,7 +115,7 @@ function init(){
                     status: "sent"
                 };
                 messages.push(newMessage);
-                
+                this.newText = '';               
             }
         },
 
