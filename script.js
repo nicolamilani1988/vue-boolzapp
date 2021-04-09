@@ -93,7 +93,7 @@ function init(){
             ],
             
             
-            activeChat: "Apri una chat",
+            activeChat: '',
         },
 
         methods:{
