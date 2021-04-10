@@ -24,14 +24,18 @@
         <!-- parte contatti a sx -->
         <nav id="contact-list">
             <!-- barra ricerca contatti -->
-            <input type="text">
+            <input type="text" v-model="userSearch">
 
-            <!-- contatti -->          
-            <div class="contact" :id="elem['name'].toLowerCase()" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
-                <span>{{elem['name']}}</span>
-                <img :src="'./img/pic'+elem.avatar+'.jpg'" alt="" width="50px" height = "50px">
+            <!-- contatti -->
+            <div class= "contact-list">
+                <ul>
+                    <li v-if="elem['name'].toLowerCase().includes(userSearch.toLowerCase())" class="contact" :id="elem['name'].toLowerCase()" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
+                        <span>{{elem['name']}}</span>
+                        <img :src="'./img/pic'+elem.avatar+'.jpg'" alt="" width="50px" height = "50px">
+                    </li>
+                </ul>
             </div>
-            
+           
         </nav>
 
         <!-- chat centrale -->

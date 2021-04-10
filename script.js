@@ -93,9 +93,9 @@ function init(){
             ],
             
             
-            activeChat: '',
-
-            newText: '',
+            activeChat: '', // var = obj attivo
+            newText: '', // messaggio digitato
+            userSearch: '',
         },
 
         methods:{
