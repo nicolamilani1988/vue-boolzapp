@@ -24,7 +24,7 @@
         <!-- parte contatti a sx -->
         <nav id="contact-list">
             <!-- parte utente -->
-            <div id="navbar-user">
+            <div class="active-user">
                 <img src="./img/me.jpg" alt="" width="50px" height = "50px">
             </div>
             <!-- barra ricerca contatti -->
@@ -47,10 +47,10 @@
            
         </nav>
 
-        <!-- chat centrale -->
+        <!-- parte centrale -->
         <main>
             <!-- schermata home -->
-            <div class="start-background" :class="startTheme">
+            <section id="start-background" :class="startTheme">
                 <div>
                     <div id="theme-img-container">
                         <img src="./img/start-theme.jpg" alt="">
@@ -58,7 +58,7 @@
                     <h1>Mantieni il telefono connesso</h1>
                     <p>Boolzap non si collega al tuo telefono, puoi solo scorrere le chat dei personaggi di The Office</p>
                 </div>    
-            </div>
+            </section>
             
             <!-- barra altro utente attivo -->
             <div class="active-user">

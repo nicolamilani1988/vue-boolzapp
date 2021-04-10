@@ -20,30 +20,20 @@ img{
     display:flex;
 }
 
+/* regole condivise */
+.active-user{
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
 /* attributi vue per i :bind  */
 .hide{
     display: none;
+
 }
 
-/* regole schermata di apertura */
-main{
-    position: relative;
-}
-.start-background{
-    background-color: #F6F7FB;
-    position: absolute;
-    top:0;
-    left: 0;
-    bottom: 0;
-    right:0;
-}
-
-.start-background>div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 100px 0;
-}
 
 
 /* regole navbar lista contatti */
@@ -51,11 +41,6 @@ main{
     width: 400px;
     /* debug */
     border: 1px solid red;
-}
-
-#navbar-user{
-    background-color: lightgray;
-    padding: 10px;
 }
 
 #navbar-searchbar{
@@ -83,23 +68,35 @@ main{
 }
 
 
-/* regole main */
+/* REGOLE MAIN */
 main{
+    position: relative;
     flex-grow: 1;
-    border: 1px solid blue;  
+    border: 1px solid blue;
 }
 
-/* regole sezione visualizzazione */
-.active-user{
-    background-color: lightgray;
+/* regole prima sezione main: schermata start */
+#start-background{
+    background-color: #F6F7FB;
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right:0;
+}
+
+#start-background>div{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding: 100px 0;
 }
 
+/* regole seconda sezione main: visualizzazione messaggi */
 #message-view{
     height: 90vh;
     background-image: url('./img/background.jpg');
+    padding: 20px 0;
 }
 
 #message-view>div{
@@ -109,7 +106,7 @@ main{
 
 #message-view>div li{
     border: 1px solid blue;
-    margin: 10px;
+    padding: 10px 0;
 }
 
 .sent{
@@ -134,7 +131,7 @@ main{
     border-radius: 20px;
 }
 
-/* regole sezione scrittura messaggi */
+/* regole terza sezione main: scrittura messaggi */
 #message-write{
     background-color: lightblue;
     height: 10vh;
