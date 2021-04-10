@@ -23,15 +23,24 @@
 
         <!-- parte contatti a sx -->
         <nav id="contact-list">
+            <!-- parte utente -->
+            <div id="navbar-user">
+                <img src="./img/me.jpg" alt="" width="50px" height = "50px">
+            </div>
             <!-- barra ricerca contatti -->
-            <input type="text" v-model="userSearch">
+            <div id="navbar-searchbar">
+                <div>
+                    <i class="fas fa-search"></i>
+                    <input type="text" v-model="userSearch" placeholder="Cerca la chat">
+                </div>
+            </div>
 
             <!-- contatti -->
             <div class= "contact-list">
                 <ul>
                     <li v-if="elem['name'].toLowerCase().includes(userSearch.toLowerCase())" class="contact" :id="elem['name'].toLowerCase()" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
-                        <span>{{elem['name']}}</span>
                         <img :src="'./img/pic'+elem.avatar+'.jpg'" alt="" width="50px" height = "50px">
+                        <span>{{elem['name']}}</span>
                     </li>
                 </ul>
             </div>
@@ -40,12 +49,27 @@
 
         <!-- chat centrale -->
         <main>
-            <!-- visualizzazione messaggi -->
-            <section id="message-view">
-                <!-- parte messaggi -->
+            <!-- schermata home -->
+            <div class="start-background" :class="startTheme">
                 <div>
+                    <div id="theme-img-container">
+                        <img src="./img/start-theme.jpg" alt="">
+                    </div>
+                    <h1>Mantieni il telefono connesso</h1>
+                    <p>Boolzap non si collega al tuo telefono, puoi solo scorrere le chat dei personaggi di The Office</p>
+                </div>    
+            </div>
+            
+            <!-- barra altro utente attivo -->
+            <div class="active-user">
+                <img :src="'./img/pic'+activeChat.avatar+'.jpg'" alt="" width="50px" height= "50px">
+                <h2>{{activeChat['name']}}</h2>
+            </div>
+            <!-- visualizzazione messaggi -->
+            <section id="message-view">               
+                <!-- parte messaggi -->
+                <div>                                     
                     <ul>
-                        <h2>{{activeChat['name']}}</h2>
                         <li v-for="(elem,index) in activeChat['messages']" :class="elem['status']">
                             <div class="chat-message">    
                                 <img v-if="elem['status'] == 'received'" :src="'./img/pic'+activeChat['avatar']+'.jpg'" alt="" width="50px" height = "50px">

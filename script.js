@@ -7,7 +7,7 @@ function init(){
 
             contacts: [
                 {
-                    name: 'Michele',
+                    name: 'Michael',
                     avatar: '_1',
                     visible: true,
                     messages: [
@@ -29,7 +29,7 @@ function init(){
                     ],
                 },
                 {
-                    name: 'Fabio',
+                    name: 'Dwight',
                     avatar: '_2',
                     visible: true,
                     messages: [
@@ -51,7 +51,7 @@ function init(){
                     ],
                 },
                 {
-                    name: 'Samuele',
+                    name: 'Stanley',
                     avatar: '_3',
                     visible: true,
                     messages: [
@@ -73,7 +73,7 @@ function init(){
                     ],
                 },
                 {
-                    name: 'Luisa',
+                    name: 'Meredith',
                     avatar: '_4',
                     visible: true,
                     messages: [
@@ -93,14 +93,27 @@ function init(){
             ],
             
             
-            activeChat: '', // var = obj attivo
+            activeChat: {
+                name: 'Start',
+                avatar: '_3',
+                visible: true,
+                messages: [
+                    {
+                        date: '28/03/2020 10:10:40',
+                        text: 'La Marianna va in campagna',
+                        status: 'received'
+                    },
+                ],
+            }, // var = obj attivo. Lo imposto con un fake perchè mi dava errore in gmail al caricam della foto, riga 66
             newText: '', // messaggio digitato
-            userSearch: '',
+            userSearch: '', // caratteri searchbar contatti
+            startTheme: '', //classe per far sparire la schermata
         },
 
         methods:{
             getActiveChat: function(index){
                 
+                this.startTheme = 'hide';
                 this.activeChat = this.contacts[index];
                 
             },
