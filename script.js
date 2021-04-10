@@ -115,8 +115,20 @@ function init(){
                     status: "sent"
                 };
                 messages.push(newMessage);
-                this.newText = '';               
-            }
+                this.newText = '';
+                setTimeout(function(){
+                   const userText = "ok" ;
+                   const userMessage = {
+                       date: data,
+                       text: userText,
+                       status: "received"
+                   };
+                   messages.push(userMessage);
+                },1000);
+
+            },
+            
+
         },
 
         
