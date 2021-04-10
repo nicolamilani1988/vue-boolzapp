@@ -55,8 +55,25 @@ main{
 }
 
 .sent{
-    text-align: right;
-    color: green;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sent>div{
+    background-color: green;
+    padding: 20px 10px;
+    border-radius: 20px;
+}
+
+.received{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.received>div{
+    background-color: white;
+    padding: 20px 10px;
+    border-radius: 20px;
 }
 
 /* regole sezione scrittura messaggi */
