@@ -31,14 +31,14 @@ img{
 /* attributi vue per i :bind  */
 .hide{
     display: none;
-
 }
 
 
 
-/* regole navbar lista contatti */
+/* regole NAVBAR */
 #contact-list{
     width: 400px;
+    height: 100vh;
     /* debug */
     border: 1px solid red;
 }
@@ -73,6 +73,8 @@ main{
     position: relative;
     flex-grow: 1;
     border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
 }
 
 /* regole prima sezione main: schermata start */
@@ -94,7 +96,7 @@ main{
 
 /* regole seconda sezione main: visualizzazione messaggi */
 #message-view{
-    height: 90vh;
+    flex-grow: 1;
     background-image: url('./img/background.jpg');
     padding: 20px 0;
 }
@@ -134,5 +136,5 @@ main{
 /* regole terza sezione main: scrittura messaggi */
 #message-write{
     background-color: lightblue;
-    height: 10vh;
+    height: 100px;
 }
