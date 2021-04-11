@@ -111,28 +111,6 @@ main{
     padding: 10px 0;
 }
 
-.sent{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.sent>div{
-    background-color: green;
-    padding: 20px 10px;
-    border-radius: 20px;
-}
-
-.received{
-    display: flex;
-    justify-content: flex-start;
-}
-
-.received>div{
-    background-color: white;
-    padding: 20px 10px;
-    border-radius: 20px;
-}
-
 .chat-message{
     position: relative;
 }
@@ -146,6 +124,45 @@ main{
 
 .chat-message:hover .dropdown-icon{
     display: inline-block;
+}
+
+.sent>div, .received>div{
+    padding: 20px 10px;
+    border-radius: 20px;
+}
+
+.sent{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.sent>.chat-message{
+    background-color: green;
+}
+
+.received{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.received>div, .dropdown-menu{
+    background-color: white;
+}
+
+
+.sent .dropdown-menu{
+    border: 1px solid black;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+}
+
+.received .dropdown-menu{
+    left: -50px;
+    position: relative;
+    top: 50px;
+    border: 1px solid black;
 }
 
 /* regole terza sezione main: scrittura messaggi */
