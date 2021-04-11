@@ -115,6 +115,7 @@ main{
     position: relative;
     padding: 20px 10px;
     border-radius: 10px;
+    box-shadow: 1px 1px #888888;
 }
 
 .chat-message i{
