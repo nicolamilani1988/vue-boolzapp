@@ -92,7 +92,9 @@
 
             <!-- scrittura messaggi -->
             <section id="message-write">
-                <input type="text" @keyup.enter="addText" v-model="newText">
+                <div>
+                    <input type="text" @keyup.enter="addText" v-model="newText" placeholder="Scrivi un messaggio...">
+                </div>
             </section>
 
         </main>

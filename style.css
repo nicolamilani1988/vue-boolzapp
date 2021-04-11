@@ -14,6 +14,7 @@ ul li{
 
 img{
     border-radius: 50%;
+    margin-right: 10px;
 }
 
 .container{
@@ -26,6 +27,18 @@ img{
     display: flex;
     align-items: center;
     padding: 10px;
+}
+
+#navbar-searchbar>div,#message-write>div{
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: white;
+}
+
+#navbar-searchbar input, #message-write input{
+    border: none;
+    padding: 0 10px;
 }
 
 /* attributi vue per i :bind  */
@@ -46,18 +59,6 @@ img{
 #navbar-searchbar{
     background-color: #ECEEED;
     padding: 10px;
-}
-
-#navbar-searchbar>div{
-    width: 100%;
-    border-radius: 20px;
-    padding: 10px;
-    background-color: white;
-}
-
-#navbar-searchbar input{
-    border: none;
-    padding: 0 10px;
 }
 
 .contact{
@@ -174,6 +175,9 @@ main{
 
 /* regole terza sezione main: scrittura messaggi */
 #message-write{
-    background-color: lightblue;
-    height: 100px;
+    background-color: lightgray;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
 }
