@@ -73,14 +73,16 @@
                                 <img v-if="elem['status'] == 'received'" :src="'./img/pic'+activeChat['avatar']+'.jpg'" alt="" width="50px" height = "50px">
                                 <img v-else :src="'./img/me.jpg'" alt="" width="50px" height = "50px">
                                 <span>{{elem['text']}}</span>
-                                <i @click="showMenu(index)" class="dropdown-icon fas fa-chevron-down"></i>
+                                <i @click="showMenu(index)" class="fas fa-chevron-down"></i>
+                                <!-- menu tendina nascosto -->
+                                <div v-show="elem['menuDisplay'] == true" class="dropdown-menu">
+                                    <div>
+                                        <p @click= "deleteMsg(index)">Cancella messaggio</p>
+                                        <p @click= "deleteMsg(index)">Info messaggio</p>
+                                    </div>                              
+                                </div>
                             </div>
-                            <div v-show="elem['menuDisplay'] == true" class="dropdown-menu">
-                                <div>
-                                    <p @click= "deleteMsg(index)">Cancella messaggio</p>
-                                    <p @click= "deleteMsg(index)">Info messaggio</p>
-                                </div>                              
-                            </div>
+                            
                         </li>
                     </ul>
                     
