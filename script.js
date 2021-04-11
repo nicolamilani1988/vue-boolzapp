@@ -85,7 +85,7 @@ function init(){
                         {
                             date: '10/01/2020 15:50:00',
                             text: 'Si, ma preferirei andare al cinema',
-                            status: 'received'
+                            status: 'received',
                         }
                     ],   
                 },      
@@ -134,6 +134,17 @@ function init(){
                 },1000);
 
             },
+            showMenu: function(index){
+                const messages = this.activeChat['messages'];
+                messages[index]['menuDisplay'] = true;
+                console.log(messages[index]);
+            }, //da modificare ! ! ! 
+            
+            deleteMsg: function(index){
+                const messages = this.activeChat['messages'];
+                messages.splice(index,1);
+                console.log(index,"ciao");
+            }
             
 
         },

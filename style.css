@@ -97,7 +97,7 @@ main{
 /* regole seconda sezione main: visualizzazione messaggi */
 #message-view{
     flex-grow: 1;
-    background-image: url('./img/background.jpg');
+    background-image: url('./img/background.png');
     padding: 20px 0;
 }
 
@@ -128,7 +128,7 @@ main{
 
 .sent>div, .received>div{
     padding: 20px 10px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .sent{
@@ -138,7 +138,7 @@ main{
 }
 
 .sent>.chat-message{
-    background-color: green;
+    background-color: #D8F3C4;
 }
 
 .received{
@@ -146,23 +146,28 @@ main{
     justify-content: flex-start;
 }
 
+.dropdown-menu{
+    z-index: 9;
+    box-shadow: 1px 2px #888888;
+    border: 1px solid #f4f4f4;
+    display: flex;
+    align-items: center;
+}
+
 .received>div, .dropdown-menu{
     background-color: white;
 }
 
-
 .sent .dropdown-menu{
-    border: 1px solid black;
     position: absolute;
     top: 50%;
-    right: 10px;
+    right: 10px;   
 }
 
 .received .dropdown-menu{
     left: -50px;
     position: relative;
     top: 50px;
-    border: 1px solid black;
 }
 
 /* regole terza sezione main: scrittura messaggi */
