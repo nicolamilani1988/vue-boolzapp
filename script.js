@@ -97,13 +97,7 @@ function init(){
                 name: 'Start',
                 avatar: '_3',
                 visible: true,
-                messages: [
-                    {
-                        date: '28/03/2020 10:10:40',
-                        text: 'La Marianna va in campagna',
-                        status: 'received'
-                    },
-                ],
+                messages: [],
             }, // var = obj attivo. Lo imposto con un fake perchè mi dava errore in gmail al caricam della foto, riga 66
             newText: '', // messaggio digitato
             userSearch: '', // caratteri searchbar contatti

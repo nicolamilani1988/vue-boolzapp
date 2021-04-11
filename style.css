@@ -133,6 +133,21 @@ main{
     border-radius: 20px;
 }
 
+.chat-message{
+    position: relative;
+}
+
+.dropdown-icon{
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    display: none;
+}
+
+.chat-message:hover .dropdown-icon{
+    display: inline-block;
+}
+
 /* regole terza sezione main: scrittura messaggi */
 #message-write{
     background-color: lightblue;
