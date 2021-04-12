@@ -105,7 +105,8 @@ function init(){
             newText: '', // messaggio digitato
             userSearch: '', // caratteri searchbar contatti
             startTheme: '', //classe per far sparire la schermata
-            //data con activeMsg
+            activeMsg : '',
+            isVisible : false,
         },
 
         methods:{
@@ -138,19 +139,20 @@ function init(){
                 },1000);
 
             },
-            showMenu: function(index){
+            showMenu: function(elem){
+
+                this.activeMsg = elem;
+                this.isVisible = false;
+                this.isVisible = !this.isVisible;
+                console.log(this.isVisible);    
                 
-                let message = this.activeChat.messages[index];
-                message.menuDisplay = !message.menuDisplay;
-                console.log(message);
-                
-                
-            }, //da modificare ! ! ! 
+            },  
             
             deleteMsg: function(index){
                 const messages = this.activeChat['messages'];
                 messages.splice(index,1);
-                console.log(index,"ciao");
+                this.isVisible = false;
+                
             },
             lastMessage: function(elem){
                 return elem['messages'][elem['messages'].length-1]['text'];

@@ -56,9 +56,6 @@ i.fas.fa-check-double{
     display: none;
 }
 
-.show{
-    display: inline-block;
-}
 
 
 /* regole NAVBAR */
@@ -153,15 +150,27 @@ main{
 
 .chat-message{
     position: relative;
-    padding: 20px 10px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 1px 1px #888888;
+    display: flex;
 }
 
-.chat-message i{
+.chat-message>div:nth-child(2){
+    display: flex;
+    align-items: center;
+}
+
+.chat-message>div:nth-child(3){
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.chat-message i.fa-chevron-down{
     position: absolute;
     right: 10px;
-    top: 20px;
+    top: 10px;
     display: none;
     color: grey;
 }
@@ -176,11 +185,11 @@ main{
     position: relative;
 }
 
-.sent>.chat-message{
+.sent .chat-message{
     background-color: #D8F3C4;
 }
 
-.received>.chat-message, .dropdown-menu{
+.received .chat-message, .dropdown-menu{
     background-color: white;
 }
 

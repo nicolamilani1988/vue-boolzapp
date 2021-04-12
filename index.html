@@ -26,30 +26,34 @@
 
         <!-- barra laterale -->
         <nav id="contact-list">
+
             <!-- parte utente -->
-            <div class="active-user">
+            <section class="active-user">
                 <img src="./img/me.jpg" alt="" width="50px" height = "50px">
                 <div>
                     <i class="fas fa-circle-notch"></i>
                     <i class="fas fa-plus"></i>
                     <i class="fas fa-ellipsis-h"></i>
-                </div>
-                
-            </div>
+                </div>              
+            </section>
+
             <!-- barra ricerca contatti -->
-            <div id="navbar-searchbar">
+            <section id="navbar-searchbar">
                 <div>
                     <i class="fas fa-search"></i>
                     <input type="text" v-model="userSearch" placeholder="Cerca la chat">
                 </div>
-            </div>
+            </section>
+
             <!-- contatti -->
-            <div class= "contact-list">
+            <section class= "contact-list">
                 <ul>
                     <li v-if="elem['name'].toLowerCase().includes(userSearch.toLowerCase())" class="contact" :class="elem['name'] == activeChat['name'] ? 'active' : ''" :id="elem['name'].toLowerCase()" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
+                        <!-- user logo -->
                         <div>
                             <img :src="'./img/pic'+elem.avatar+'.jpg'" alt="" width="50px" height = "50px">
                         </div>
+                        <!-- user name +msg -->
                         <div>
                             <p>{{elem['name']}}</p>
                             <p class="small-text" >
@@ -58,18 +62,22 @@
                                 <span>{{lastMessage(elem)}}</span>
                             </p>
                         </div>
+                        <!-- msg-hour -->
                         <div>
                             <p class="small-text">{{lastDate(elem) | dateFormat}}</p>
                         </div>
                     </li>
                 </ul>
-            </div>
+
+            </section>
            
         </nav>
 
+
         <!-- parte centrale -->
         <main>
-            <!-- schermata home -->
+            
+            <!-- schermata apertura app -->
             <section id="start-background" :class="startTheme">
                 <div>
                     <div id="theme-img-container">
@@ -83,32 +91,38 @@
             <!-- barra altro utente attivo -->
             <section class="active-user">
                 <img :src="'./img/pic'+activeChat.avatar+'.jpg'" alt="" width="50px" height= "50px">
-                <h2>{{activeChat['name']}}</h2>
+                <div>{{activeChat['name']}}</div>
             </section>
+
             <!-- visualizzazione messaggi -->
             <section id="message-view">               
                 <div>                                     
                     <ul>
-                        <li v-for="(elem,index) in activeChat['messages']" :class="elem['status']" :key="index">
-                            <div class="chat-message">    
-                                <img v-if="elem['status'] == 'received'" :src="'./img/pic'+activeChat['avatar']+'.jpg'" alt="" width="50px" height = "50px">
-                                <img v-else :src="'./img/me.jpg'" alt="" width="50px" height = "50px">
-                                <span>{{elem['text']}}</span>
-                                <i @click="showMenu(index)" class="fas fa-chevron-down"></i>
+                        <li v-for="(elem,index) in activeChat['messages']" :class="elem['status']">
+                            <div class="chat-message">
+                                <div>
+                                    <img v-if="elem['status'] == 'received'" :src="'./img/pic'+activeChat['avatar']+'.jpg'" alt="" width="50px" height = "50px">
+                                    <img v-else :src="'./img/me.jpg'" alt="" width="50px" height = "50px">  
+                                </div>   
+                                
+                                <div>{{elem['text']}}</div>
+
+                                <div>
+                                    <span v-if ="elem['status'] == 'sent'" class="small-text">{{dayjs(elem['data']).format('HH:mm')}} <i class="fas fa-check-double"></i></span>
+                                    <span v-else class="small-text">{{dayjs(elem['data']).format('HH:mm')}}</span>
+                                </div>
+                                <i @click="showMenu(elem)" class="fas fa-chevron-down"></i>
                                 <!-- menu tendina nascosto -->
-                                <div v-if="elem.menuDisplay" class="dropdown-menu">
+                                <div v-if="elem === activeMsg && isVisible" class="dropdown-menu">
                                     <div>
                                         <p @click= "deleteMsg(index)">Cancella messaggio</p>
                                         <p>Info messaggio</p>
                                     </div>                        
                                 </div>
-                            </div>
-                            
+                            </div>                         
                         </li>
-                    </ul>
-                    
+                    </ul>                  
                 </div>
-
             </section>
 
             <!-- scrittura messaggi -->
