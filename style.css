@@ -17,6 +17,15 @@ img{
     margin-right: 10px;
 }
 
+.small-text{
+    font-size: 0.9rem;
+    color: gray;
+}
+
+i.fas.fa-check-double{
+    color: aqua;
+}
+
 .container{
     display:flex;
 }
@@ -39,6 +48,7 @@ img{
 #navbar-searchbar input, #message-write input{
     border: none;
     padding: 0 10px;
+    outline: none;
 }
 
 /* attributi vue per i :bind  */
@@ -56,6 +66,17 @@ img{
     border: 1px solid red;
 }
 
+#contact-list .active-user{
+    display: flex;
+    justify-content: space-between;
+}
+
+#contact-list .active-user i{
+    margin:5px;
+    color: gray;
+    font-size: 1.5rem;
+}
+
 #navbar-searchbar{
     background-color: #ECEEED;
     padding: 10px;
@@ -66,6 +87,7 @@ img{
     background-color: white;
     border: 1px solid black;
     padding: 10px;
+    display: flex;
 }
 
 
@@ -158,6 +180,8 @@ main{
     align-items: center;
     padding: 20px 10px;
     border-radius: 3px;
+    width: 200px;
+    height: 100px;
 }
 
 .sent .dropdown-menu{

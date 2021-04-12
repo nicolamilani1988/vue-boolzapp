@@ -80,12 +80,14 @@ function init(){
                         {
                             date: '10/01/2020 15:30:55',
                             text: 'Lo sai che ha aperto una nuova pizzeria?',
-                            status: 'sent'
+                            status: 'sent',
+                            menuDisplay: false
                         },
                         {
                             date: '10/01/2020 15:50:00',
                             text: 'Si, ma preferirei andare al cinema',
                             status: 'received',
+                            menuDisplay: false
                         }
                     ],   
                 },      
@@ -144,8 +146,13 @@ function init(){
                 const messages = this.activeChat['messages'];
                 messages.splice(index,1);
                 console.log(index,"ciao");
+            },
+            lastMessage: function(elem){
+                return elem['messages'][elem['messages'].length-1]['text'];
+            },
+            lastDate: function(elem){
+                return elem['messages'][elem['messages'].length-1]['date'];
             }
-            
 
         },
 
