@@ -137,9 +137,11 @@ function init(){
 
             },
             showMenu: function(index){
-                const messages = this.activeChat['messages'];
-                messages[index]['menuDisplay'] = !messages[index]['menuDisplay'];
-                console.log(messages[index]);
+                let message = this.activeChat['messages'][index];
+                message = !message;
+                console.log(index, message);
+                
+                
             }, //da modificare ! ! ! 
             
             deleteMsg: function(index){

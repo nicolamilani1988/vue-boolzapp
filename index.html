@@ -10,7 +10,7 @@
     <!-- VueJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <!-- dayJS -->
-    <script src="path/to/dayjs/dayjs.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- my css -->
@@ -58,7 +58,7 @@
                             </p>
                         </div>
                         <div>
-                            <p>{{lastDate(elem)}}</p>
+                            <p>{{dayjs(lastDate(elem)).format('HH:MM')}}</p>
                         </div>
                     </li>
                 </ul>
@@ -95,7 +95,7 @@
                                 <span>{{elem['text']}}</span>
                                 <i @click="showMenu(index)" class="fas fa-chevron-down"></i>
                                 <!-- menu tendina nascosto -->
-                                <div v-show="elem['menuDisplay'] == true" class="dropdown-menu">
+                                <div v-if="elem" class="dropdown-menu">
                                     <div>
                                         <p @click= "deleteMsg(index)">Cancella messaggio</p>
                                         <p @click= "deleteMsg(index)">Info messaggio</p>
