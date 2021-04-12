@@ -142,9 +142,8 @@ function init(){
             showMenu: function(elem){
 
                 this.activeMsg = elem;
-                this.isVisible = false;
                 this.isVisible = !this.isVisible;
-                console.log(this.isVisible);    
+                console.log(this.isVisible); 
                 
             },  
             

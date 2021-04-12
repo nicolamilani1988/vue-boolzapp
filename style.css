@@ -34,11 +34,23 @@ i.fas.fa-check-double{
 .active-user{
     background-color: lightgray;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 10px;
 }
 
-#navbar-searchbar>div,#message-write>div{
+.active-user>*{
+    display: flex;
+    align-items: center;
+}
+
+.active-user i, #message-write i{
+    margin:10px;
+    color: gray;
+    font-size: 1.5rem;
+}
+
+#navbar-searchbar>div,#message-write>div:nth-child(3){
     width: 100%;
     border-radius: 20px;
     padding: 10px;
@@ -50,6 +62,7 @@ i.fas.fa-check-double{
     padding: 0 10px;
     outline: none;
 }
+
 
 /* attributi vue per i :bind  */
 .hide{
@@ -64,17 +77,6 @@ i.fas.fa-check-double{
     height: 100vh;
     /* debug */
     border: 1px solid red;
-}
-
-#contact-list .active-user{
-    display: flex;
-    justify-content: space-between;
-}
-
-#contact-list .active-user i{
-    margin:5px;
-    color: gray;
-    font-size: 1.5rem;
 }
 
 #navbar-searchbar{
@@ -226,8 +228,11 @@ main{
 /* regole terza sezione main: scrittura messaggi */
 #message-write{
     background-color: lightgray;
-    height: 50px;
     display: flex;
-    align-items: center;
-    padding: 20px 30px;
+    justify-content: space-between;
+    padding: 10px 30px;
+}
+
+#message-write>div:nth-child(3){
+    flex-grow: 1;
 }

@@ -90,8 +90,14 @@
             
             <!-- barra altro utente attivo -->
             <section class="active-user">
-                <img :src="'./img/pic'+activeChat.avatar+'.jpg'" alt="" width="50px" height= "50px">
-                <div>{{activeChat['name']}}</div>
+                <div>
+                    <img :src="'./img/pic'+activeChat.avatar+'.jpg'" alt="" width="50px" height= "50px">
+                    <span>{{activeChat['name']}}</span>
+                </div>
+                <div>
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
             </section>
 
             <!-- visualizzazione messaggi -->
@@ -128,7 +134,16 @@
             <!-- scrittura messaggi -->
             <section id="message-write">
                 <div>
+                    <i class="far fa-laugh"></i>
+                </div>
+                <div>    
+                    <i class="fas fa-paperclip"></i>
+                </div>
+                <div>
                     <input type="text" @keyup.enter="addText" v-model="newText" placeholder="Scrivi un messaggio...">
+                </div>
+                <div>
+                    <i class="fas fa-microphone"></i>
                 </div>
             </section>
 
