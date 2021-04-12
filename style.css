@@ -92,7 +92,7 @@ i.fas.fa-check-double{
     display: flex;
 }
 
-.contact:hover, .contact.active{
+.contact:hover, .contact.active, .dropdown-menu>p:hover{
     background-color: lightgray;
 }
 
@@ -205,11 +205,14 @@ main{
     box-shadow: 1px 2px #888888;
     border: 1px solid lightgray;
     display: flex;
-    align-items: center;
-    padding: 20px 10px;
+    flex-direction: column;
+    justify-content: space-between;
     border-radius: 3px;
     width: 200px;
-    height: 100px;
+}
+
+.dropdown-menu>*{
+    padding: 20px 10px;
 }
 
 .sent .dropdown-menu{

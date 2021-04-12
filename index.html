@@ -120,10 +120,8 @@
                                 <i @click="showMenu(elem)" class="fas fa-chevron-down"></i>
                                 <!-- menu tendina nascosto -->
                                 <div v-if="elem === activeMsg && isVisible" class="dropdown-menu">
-                                    <div>
-                                        <p @click= "deleteMsg(index)">Cancella messaggio</p>
-                                        <p>Info messaggio</p>
-                                    </div>                        
+                                    <p @click= "deleteMsg(index)">Cancella messaggio</p>
+                                    <p>Info messaggio</p>
                                 </div>
                             </div>                         
                         </li>
