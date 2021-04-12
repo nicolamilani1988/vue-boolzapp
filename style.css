@@ -88,7 +88,7 @@ i.fas.fa-check-double{
 .contact{
     width: 100%;
     background-color: white;
-    border: 1px solid black;
+    border-top: 1px solid lightgray;
     padding: 10px;
     display: flex;
 }
