@@ -45,7 +45,7 @@
             <!-- contatti -->
             <div class= "contact-list">
                 <ul>
-                    <li v-if="elem['name'].toLowerCase().includes(userSearch.toLowerCase())" class="contact" :id="elem['name'].toLowerCase()" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
+                    <li v-if="elem['name'].toLowerCase().includes(userSearch.toLowerCase())" class="contact" :class="elem['name'] == activeChat['name'] ? 'active' : ''" :id="elem['name'].toLowerCase()" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
                         <div>
                             <img :src="'./img/pic'+elem.avatar+'.jpg'" alt="" width="50px" height = "50px">
                         </div>
@@ -95,10 +95,10 @@
                                 <span>{{elem['text']}}</span>
                                 <i @click="showMenu(index)" class="fas fa-chevron-down"></i>
                                 <!-- menu tendina nascosto -->
-                                <div v-if="elem" class="dropdown-menu">
+                                <div :class="elem == true ? 'show' : 'hide' " class="dropdown-menu">
                                     <div>
                                         <p @click= "deleteMsg(index)">Cancella messaggio</p>
-                                        <p @click= "deleteMsg(index)">Info messaggio</p>
+                                        <p>Info messaggio</p>
                                     </div>                              
                                 </div>
                             </div>

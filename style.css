@@ -56,6 +56,14 @@ i.fas.fa-check-double{
     display: none;
 }
 
+.show{
+    display: inline-block;
+}
+
+.active{
+    background-color: red;
+}
+
 
 
 /* regole NAVBAR */
@@ -88,6 +96,10 @@ i.fas.fa-check-double{
     border: 1px solid black;
     padding: 10px;
     display: flex;
+}
+
+.contact:hover{
+    background-color: #ECEEED;
 }
 
 

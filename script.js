@@ -96,14 +96,16 @@ function init(){
             
             
             activeChat: {
-                name: 'Start',
+                name: 'Meredith',
                 avatar: '_3',
                 visible: true,
                 messages: [],
             }, // var = obj attivo. Lo imposto con un fake perchè mi dava errore in gmail al caricam della foto, riga 66
+            
             newText: '', // messaggio digitato
             userSearch: '', // caratteri searchbar contatti
             startTheme: '', //classe per far sparire la schermata
+            
         },
 
         methods:{
@@ -137,9 +139,10 @@ function init(){
 
             },
             showMenu: function(index){
+                
                 let message = this.activeChat['messages'][index];
                 message = !message;
-                console.log(index, message);
+                console.log(message);
                 
                 
             }, //da modificare ! ! ! 
