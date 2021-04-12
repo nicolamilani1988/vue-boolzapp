@@ -23,7 +23,7 @@ img{
 }
 
 i.fas.fa-check-double{
-    color: aqua;
+    color: #04AAF2;
 }
 
 .container{
@@ -60,11 +60,6 @@ i.fas.fa-check-double{
     display: inline-block;
 }
 
-.active{
-    background-color: red;
-}
-
-
 
 /* regole NAVBAR */
 #contact-list{
@@ -98,8 +93,18 @@ i.fas.fa-check-double{
     display: flex;
 }
 
-.contact:hover{
-    background-color: #ECEEED;
+.contact:hover, .contact.active{
+    background-color: lightgray;
+}
+
+.contact>div:nth-child(2){
+    flex-grow: 1;
+}
+
+.contact>div:last-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 

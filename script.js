@@ -96,7 +96,7 @@ function init(){
             
             
             activeChat: {
-                name: 'Meredith',
+                name: '',
                 avatar: '_3',
                 visible: true,
                 messages: [],
@@ -105,7 +105,7 @@ function init(){
             newText: '', // messaggio digitato
             userSearch: '', // caratteri searchbar contatti
             startTheme: '', //classe per far sparire la schermata
-            
+            //data con activeMsg
         },
 
         methods:{
@@ -140,8 +140,8 @@ function init(){
             },
             showMenu: function(index){
                 
-                let message = this.activeChat['messages'][index];
-                message = !message;
+                let message = this.activeChat.messages[index];
+                message.menuDisplay = !message.menuDisplay;
                 console.log(message);
                 
                 
@@ -159,6 +159,15 @@ function init(){
                 return elem['messages'][elem['messages'].length-1]['date'];
             }
 
+        },
+
+        filters: {
+            dateFormat: function(val){
+                dayjs.extend(window.dayjs_plugin_customParseFormat);
+              
+                const dateString  = dayjs(val, "DD/MM/YYYY HH:mm:ss").format('HH:mm');
+                return dateString;
+            }
         },
 
         

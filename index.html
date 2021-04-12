@@ -10,7 +10,8 @@
     <!-- VueJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <!-- dayJS -->
-    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.20/dayjs.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.20/plugin/customParseFormat.js"></script>
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- my css -->
@@ -58,7 +59,7 @@
                             </p>
                         </div>
                         <div>
-                            <p>{{dayjs(lastDate(elem)).format('HH:MM')}}</p>
+                            <p class="small-text">{{lastDate(elem) | dateFormat}}</p>
                         </div>
                     </li>
                 </ul>
@@ -88,18 +89,18 @@
             <section id="message-view">               
                 <div>                                     
                     <ul>
-                        <li v-for="(elem,index) in activeChat['messages']" :class="elem['status']">
+                        <li v-for="(elem,index) in activeChat['messages']" :class="elem['status']" :key="index">
                             <div class="chat-message">    
                                 <img v-if="elem['status'] == 'received'" :src="'./img/pic'+activeChat['avatar']+'.jpg'" alt="" width="50px" height = "50px">
                                 <img v-else :src="'./img/me.jpg'" alt="" width="50px" height = "50px">
                                 <span>{{elem['text']}}</span>
                                 <i @click="showMenu(index)" class="fas fa-chevron-down"></i>
                                 <!-- menu tendina nascosto -->
-                                <div :class="elem == true ? 'show' : 'hide' " class="dropdown-menu">
+                                <div v-if="elem.menuDisplay" class="dropdown-menu">
                                     <div>
                                         <p @click= "deleteMsg(index)">Cancella messaggio</p>
                                         <p>Info messaggio</p>
-                                    </div>                              
+                                    </div>                        
                                 </div>
                             </div>
                             
