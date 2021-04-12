@@ -114,14 +114,19 @@
                                 <div>{{elem['text']}}</div>
 
                                 <div>
-                                    <span v-if ="elem['status'] == 'sent'" class="small-text">{{dayjs(elem['data']).format('HH:mm')}} <i class="fas fa-check-double"></i></span>
-                                    <span v-else class="small-text">{{dayjs(elem['data']).format('HH:mm')}}</span>
+                                    <span v-if ="elem['status'] == 'sent'" class="small-text">{{elem['date'] | dateFormat}} <i class="fas fa-check-double"></i></span>
+                                    <span v-else class="small-text">{{elem['date'] | dateFormat}}</span>
                                 </div>
                                 <i @click="showMenu(elem)" class="fas fa-chevron-down"></i>
                                 <!-- menu tendina nascosto -->
-                                <div v-if="elem === activeMsg && isVisible" class="dropdown-menu">
+                                <div v-if="elem === activeMsg && isVisible" class="dropdown-menu" @mouseleave="isVisible = false">
                                     <p @click= "deleteMsg(index)">Cancella messaggio</p>
-                                    <p>Info messaggio</p>
+                                    <p @click= "infoMsg(index)">Info messaggio</p>
+                                </div>
+                                <div v-if="elem === activeMsg && isInfoVisible" class="dropdown-menu" @mouseleave="isInfoVisible = false">
+                                    <div>Messaggio inviato alle {{elem['date'] | dateFormat}}</div>
+                                    <div v-if="elem['status'] == 'sent'">Messaggio inviato da: Me</div>
+                                    <div v-else>Messaggio inviato da: {{activeChat['name']}}</div>
                                 </div>
                             </div>                         
                         </li>

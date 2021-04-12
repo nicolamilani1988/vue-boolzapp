@@ -81,13 +81,11 @@ function init(){
                             date: '10/01/2020 15:30:55',
                             text: 'Lo sai che ha aperto una nuova pizzeria?',
                             status: 'sent',
-                            menuDisplay: false
                         },
                         {
                             date: '10/01/2020 15:50:00',
                             text: 'Si, ma preferirei andare al cinema',
                             status: 'received',
-                            menuDisplay: false
                         }
                     ],   
                 },      
@@ -107,6 +105,7 @@ function init(){
             startTheme: '', //classe per far sparire la schermata
             activeMsg : '',
             isVisible : false,
+            isInfoVisible : false,
         },
 
         methods:{
@@ -142,16 +141,18 @@ function init(){
             showMenu: function(elem){
 
                 this.activeMsg = elem;
-                this.isVisible = !this.isVisible;
+                this.isVisible = true;
                 console.log(this.isVisible); 
                 
-            },  
-            
+            },              
             deleteMsg: function(index){
                 const messages = this.activeChat['messages'];
                 messages.splice(index,1);
-                this.isVisible = false;
                 
+            },
+            infoMsg: function (index){
+                this.isVisible = false;
+                this.isInfoVisible = true;
             },
             lastMessage: function(elem){
                 return elem['messages'][elem['messages'].length-1]['text'];
