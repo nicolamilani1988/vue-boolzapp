@@ -43,16 +43,16 @@
             <!-- BONUS : Aggiungi contatto alla lista -->
             <div id="add-contact" v-if="isAddbarVisible" @mouseleave="showSearchBar">
                 <img src="./img/pic_anonym.jpg" alt="" width="50px" height = "50px">
-                <div>
-                    <input type="text" v-model= "newName" @keyup.enter="addContact" placeholder="Scrivi il nome e premi invio">
+                <div class="searchbar-container">
+                    <input class="search" type="text" v-model= "newName" @keyup.enter="addContact" placeholder="Scrivi il nome e premi invio">
                 </div>
             </div>
 
             <!-- barra ricerca contatti -->
             <section id="navbar-searchbar">
-                <div>
+                <div class="searchbar-container">
                     <i class="fas fa-search"></i>
-                    <input type="text" v-model="userSearch" placeholder="Cerca la chat">
+                    <input class="search"  type="text" v-model="userSearch" placeholder="Cerca la chat">
                 </div>
             </section>
 
@@ -100,14 +100,14 @@
             </section>
             
             <!-- barra altro utente attivo -->
-            <section class="active-user">
+            <section class="active-user" @mouseleave="isMsgBarVisible = false">
                 <div>
                     <img :src="'./img/pic'+activeChat.avatar+'.jpg'" alt="" width="50px" height= "50px">
                     <span>{{activeChat['name']}}</span>
                 </div>
                 <div>
-                    <div v-if="isMsgBarVisible">
-                        <input type="text" placeholder="Cerca tra i messaggi" v-model="msgSearch" @keyup.enter="pickMsg">
+                    <div v-if="isMsgBarVisible" class="searchbar-container">
+                        <input  class="search" type="text" placeholder="Cerca tra i messaggi" v-model="msgSearch" @keyup.enter="pickMsg">
                     </div>
                     <i class="fas fa-search" @click="showMsgSearchbar" style="cursor:pointer"></i>
                     <i class="fas fa-ellipsis-h"></i>
@@ -156,8 +156,8 @@
                 <div>    
                     <i class="fas fa-paperclip"></i>
                 </div>
-                <div>
-                    <input type="text" @keyup.enter="addText" v-model="newText" placeholder="Scrivi un messaggio...">
+                <div class="searchbar-container">
+                    <input class="search" type="text" @keyup.enter="addText" v-model="newText" placeholder="Scrivi un messaggio...">
                 </div>
                 <div>
                     <i class="fas fa-microphone"></i>

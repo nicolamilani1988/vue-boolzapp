@@ -50,14 +50,14 @@ i.fas.fa-check-double{
     font-size: 1.5rem;
 }
 
-#navbar-searchbar>div,#message-write>div:nth-child(3){
+.searchbar-container{
     width: 100%;
     border-radius: 20px;
     padding: 10px;
     background-color: white;
 }
 
-#navbar-searchbar input, #message-write input, #add-contact input{
+input.search{
     border: none;
     padding: 0 10px;
     outline: none;

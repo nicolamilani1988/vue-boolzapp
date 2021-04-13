@@ -226,7 +226,7 @@ function init(){
                 const messages = this.activeChat['messages'];
                 for(let i = 0;i<messages.length;i++){
                     const message = messages[i];
-                    if(message['text'].includes(this.msgSearch.toLowerCase())){
+                    if(message['text'].toLowerCase().includes(this.msgSearch.toLowerCase())){
                         this.pickedMsg.push(message['text'].toLowerCase());
                     }
                     console.log(this.pickedMsg);
