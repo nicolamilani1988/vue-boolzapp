@@ -13,12 +13,12 @@ function init(){
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
-                            text: 'Questo JavaScript non è una passeggiata',
+                            text: "That's really hard. Do you think you can go all day?",
                             status: 'sent'
                         },
                         {
                             date: '10/01/2020 15:50:00',
-                            text: "A dire il vero, credo sia abbastanza duro",
+                            text: "Well, you always left me satisfied and smiling",
                             status: 'sent'
                         },
                         {
@@ -35,32 +35,32 @@ function init(){
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
-                            text: 'Domanda: quale tipo di orso è il migliore?',
+                            text: "Question: what kind of bear is best ?",
                             status: 'sent'
                         },
                         {
                             date: '20/03/2020 16:30:55',
-                            text: 'Questa è una domanda ridicola..',
+                            text: "That's a ridicolous question",
                             status: 'received'
                         },
                         {
                             date: '20/03/2020 16:35:00',
-                            text: 'FALSO! Il black bear è il migliore.',
+                            text: 'False. Black bear.',
                             status: 'sent'
                         },
                         {
                             date: '20/03/2020 16:37:00',
-                            text: 'Bear.Beets.Battlestar Galactica.',
+                            text: 'Bear eat beets.Bear, beets ,Battlestar Galactica.',
                             status: 'sent'
                         },
                         {
                             date: '20/03/2020 16:40:00',
-                            text: "Che cosa stai facendo? Non farlo! Il furto d'identità non è un gioco, Nicola!",
+                            text: "What is going on? What are you doing? Identity theft is not a joke, Nicola",
                             status: 'received'
                         },
                         {
                             date: '20/03/2020 16:48:00',
-                            text: "Milioni di persone ne soffrono ogni anno",
+                            text: "Millions of families suffer every year",
                             status: 'received'
                         },
 
@@ -73,17 +73,17 @@ function init(){
                     messages: [
                         {
                             date: '28/03/2020 05:10:40',
-                            text: 'Ciao Stanley, come stai ?',
+                            text: 'Hi Stanley, congratulations for your Dundy Award!',
                             status: 'sent'
                         },
                         {
                             date: '28/03/2020 05:20:10',
-                            text: 'Sono le 5 del mattino! Have you lost your mind???',
+                            text: "Have you lost your mind??? It's 5 in the morning!!",
                             status: 'received'
                         },
                         {
                             date: '28/03/2020 05:45:22',
-                            text: 'Ah scusa!',
+                            text: 'Sorry, see you later',
                             status: 'sent'
                         }
                     ],
@@ -95,12 +95,12 @@ function init(){
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
-                            text: 'Lo sai che ha aperto una nuova pizzeria?',
+                            text: 'Do you want a drink?',
                             status: 'sent',
                         },
                         {
                             date: '10/01/2020 15:50:00',
-                            text: "'Bene, se c'è da alcolizzarsi io ci sono",
+                            text: "Yes, PLEASE!",
                             status: 'received',
                         }
                     ],   
@@ -123,7 +123,10 @@ function init(){
             isVisible : false, // menu tendina visibile
             isInfoVisible : false, // info msg visibile
             isAddbarVisible: false, //input per aggiungere contatto
-            newName: '',
+            newName: '', // nome da aggiungere con input
+            msgSearch: '', //cerco tra i messaggi
+            isMsgBarVisible: false,
+            pickedMsg: [],
         },
 
         methods:{
@@ -175,7 +178,7 @@ function init(){
             showMenu: function(elem){
 
                 this.activeMsg = elem;
-                this.isVisible = true;
+                this.isVisible = !this.isVisible;
                 console.log(this.isVisible); 
                 
             },              
@@ -213,7 +216,25 @@ function init(){
                 this.contacts.push(newContact);
                 this.newName = '';
                 
+            },
+            showMsgSearchbar: function(){
+                this.isMsgBarVisible = !this.isMsgBarVisible;
+                return this.isMsgBarVisible;
+            },
+            pickMsg: function(){
+                this.pickedMsg = [];
+                const messages = this.activeChat['messages'];
+                for(let i = 0;i<messages.length;i++){
+                    const message = messages[i];
+                    if(message['text'].includes(this.msgSearch.toLowerCase())){
+                        this.pickedMsg.push(message['text'].toLowerCase());
+                    }
+                    console.log(this.pickedMsg);
+                }   
+                
+                
             }
+
 
         },
 

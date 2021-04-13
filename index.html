@@ -12,6 +12,9 @@
     <!-- dayJS -->
     <script src="https://unpkg.com/dayjs@1.8.20/dayjs.min.js"></script>
     <script src="https://unpkg.com/dayjs@1.8.20/plugin/customParseFormat.js"></script>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- my css -->
@@ -103,7 +106,10 @@
                     <span>{{activeChat['name']}}</span>
                 </div>
                 <div>
-                    <i class="fas fa-search"></i>
+                    <div v-if="isMsgBarVisible">
+                        <input type="text" placeholder="Cerca tra i messaggi" v-model="msgSearch" @keyup.enter="pickMsg">
+                    </div>
+                    <i class="fas fa-search" @click="showMsgSearchbar" style="cursor:pointer"></i>
                     <i class="fas fa-ellipsis-h"></i>
                 </div>
             </section>
@@ -119,7 +125,7 @@
                                     <img v-else :src="'./img/me.jpg'" alt="" width="50px" height = "50px">  
                                 </div>   
                                 
-                                <div>{{elem['text']}}</div>
+                                <div :class="pickedMsg.includes(elem['text'].toLowerCase()) ?'picked-message' : ''">{{elem['text']}}</div>
 
                                 <div>
                                     <span v-if ="elem['status'] == 'sent'" class="small-text">{{elem['date'] | dateFormat}} <i class="fas fa-check-double"></i></span>
