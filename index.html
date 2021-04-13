@@ -28,11 +28,11 @@
     <div id="app" class="container">
 
         <!-- barra laterale -->
-        <nav id="contact-list">
+        <nav id="contact-section">
 
             <!-- parte utente -->
-            <section class="active-user" v-if="!isAddbarVisible">
-                <img src="./img/me.jpg" alt="" width="50px" height = "50px">
+            <section id="user-section" class="active-user" v-if="!isAddbarVisible">
+                <img class="icon" src="./img/me.jpg" alt="">
                 <div>
                     <i class="fas fa-circle-notch"></i>
                     <i class="fas fa-plus" @click="showSearchBar" style="cursor:pointer"></i>
@@ -41,28 +41,28 @@
             </section>
 
             <!-- BONUS : Aggiungi contatto alla lista -->
-            <div id="add-contact" v-if="isAddbarVisible" @mouseleave="showSearchBar">
-                <img src="./img/pic_anonym.jpg" alt="" width="50px" height = "50px">
+            <section id="add-contact" v-if="isAddbarVisible" @mouseleave="showSearchBar">
+                <img class="icon"  src="./img/pic_anonym.jpg" alt="">
                 <div class="searchbar-container">
-                    <input class="search" type="text" v-model= "newName" @keyup.enter="addContact" placeholder="Scrivi il nome e premi invio">
+                    <input class="search-bar" type="text" v-model= "newName" @keyup.enter="addContact" placeholder="Scrivi il nome e premi invio">
                 </div>
-            </div>
+            </section>
 
             <!-- barra ricerca contatti -->
             <section id="navbar-searchbar">
                 <div class="searchbar-container">
                     <i class="fas fa-search"></i>
-                    <input class="search"  type="text" v-model="userSearch" placeholder="Cerca la chat">
+                    <input class="search-bar"  type="text" v-model="userSearch" placeholder="Cerca la chat">
                 </div>
             </section>
 
             <!-- contatti -->
             <section class= "contact-list">
                 <ul>
-                    <li v-if="elem['name'].toLowerCase().includes(userSearch.toLowerCase())" class="contact" :class="elem['name'] == activeChat['name'] ? 'active' : ''" :id="elem['name'].toLowerCase()" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
+                    <li v-if="elem['name'].toLowerCase().includes(userSearch.toLowerCase())" class="contact" :class="elem['name'] == activeChat['name'] ? 'active' : ''" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
                         <!-- user logo -->
                         <div>
-                            <img :src="'./img/pic'+elem.avatar+'.jpg'" alt="" width="50px" height = "50px">
+                            <img class="icon" :src="'./img/pic'+elem.avatar+'.jpg'" alt="">
                         </div>
                         <!-- user name +msg -->
                         <div>
@@ -94,20 +94,25 @@
                     <div id="theme-img-container">
                         <img src="./img/start-theme.jpg" alt="">
                     </div>
-                    <h1>Mantieni il telefono connesso</h1>
-                    <p>Boolzap non si collega al tuo telefono, puoi solo scorrere le chat dei personaggi di The Office</p>
+                    <div>
+                        <h1>Mantieni il telefono connesso</h1>
+                        <p>Boolzap non si collega al tuo telefono, puoi solo scorrere le chat dei personaggi di The Office</p>
+                    </div>             
                 </div>    
             </section>
             
             <!-- barra altro utente attivo -->
             <section class="active-user" @mouseleave="isMsgBarVisible = false">
                 <div>
-                    <img :src="'./img/pic'+activeChat.avatar+'.jpg'" alt="" width="50px" height= "50px">
+                    <img class="icon" :src="'./img/pic'+activeChat.avatar+'.jpg'" alt="">
                     <span>{{activeChat['name']}}</span>
                 </div>
                 <div>
+                    <i class="fas fa-video"></i>
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="vertical-bar"></div>
                     <div v-if="isMsgBarVisible" class="searchbar-container">
-                        <input  class="search" type="text" placeholder="Cerca tra i messaggi" v-model="msgSearch" @keyup.enter="pickMsg">
+                        <input  class="search-bar" type="text" placeholder="Cerca messaggi e premi invio" v-model="msgSearch" @keyup.enter="pickMsg">
                     </div>
                     <i class="fas fa-search" @click="showMsgSearchbar" style="cursor:pointer"></i>
                     <i class="fas fa-ellipsis-h"></i>
@@ -120,23 +125,28 @@
                     <ul>
                         <li v-for="(elem,index) in activeChat['messages']" :class="elem['status']">
                             <div class="chat-message">
+                                <!-- user-pic -->
                                 <div>
-                                    <img v-if="elem['status'] == 'received'" :src="'./img/pic'+activeChat['avatar']+'.jpg'" alt="" width="50px" height = "50px">
-                                    <img v-else :src="'./img/me.jpg'" alt="" width="50px" height = "50px">  
+                                    <img v-if="elem['status'] == 'received'" :src="'./img/pic'+activeChat['avatar']+'.jpg'" alt="" class="icon" >
+                                    <img v-else :src="'./img/me.jpg'" alt="" class="icon" >  
                                 </div>   
-                                
+                                <!-- user-message -->
                                 <div :class="pickedMsg.includes(elem['text'].toLowerCase()) ?'picked-message' : ''">{{elem['text']}}</div>
-
+                                <!-- data -->
                                 <div>
-                                    <span v-if ="elem['status'] == 'sent'" class="small-text">{{elem['date'] | dateFormat}} <i class="fas fa-check-double"></i></span>
-                                    <span v-else class="small-text">{{elem['date'] | dateFormat}}</span>
+                                    <span class="small-text">
+                                        {{elem['date'] | dateFormat}} 
+                                        <i v-if ="elem['status'] == 'sent'" class="fas fa-check-double"></i>
+                                    </span>
                                 </div>
+                                <!-- freccia del dropdown-menu -->
                                 <i @click="showMenu(elem)" class="fas fa-chevron-down"></i>
                                 <!-- menu tendina nascosto -->
                                 <div v-if="elem === activeMsg && isVisible" class="dropdown-menu" @mouseleave="isVisible = false">
                                     <p @click= "deleteMsg(index)">Cancella messaggio</p>
                                     <p @click= "infoMsg(index)">Info messaggio</p>
                                 </div>
+                                <!-- BONUS: info messaggio selezionato -->
                                 <div v-if="elem === activeMsg && isInfoVisible" class="dropdown-menu" @mouseleave="isInfoVisible = false">
                                     <div>Messaggio inviato il {{elem['date'] | dayFormat}} alle {{elem['date'] | dateFormat}}</div>
                                     <div v-if="elem['status'] == 'sent'">Messaggio inviato da: Me</div>
@@ -157,7 +167,7 @@
                     <i class="fas fa-paperclip"></i>
                 </div>
                 <div class="searchbar-container">
-                    <input class="search" type="text" @keyup.enter="addText" v-model="newText" placeholder="Scrivi un messaggio...">
+                    <input class="search-bar" type="text" @keyup.enter="addText" v-model="newText" placeholder="Scrivi un messaggio...">
                 </div>
                 <div>
                     <i class="fas fa-microphone"></i>

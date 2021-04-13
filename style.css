@@ -1,3 +1,4 @@
+/* regole generali */
 *{
     margin: 0;
     padding: 0;
@@ -12,9 +13,11 @@ ul li{
     list-style-type: none;
 }
 
-img{
+img.icon{
     border-radius: 50%;
     margin-right: 10px;
+    width: 50px;
+    height: 50px;
 }
 
 .small-text{
@@ -57,7 +60,7 @@ i.fas.fa-check-double{
     background-color: white;
 }
 
-input.search{
+input.search-bar{
     border: none;
     padding: 0 10px;
     outline: none;
@@ -72,16 +75,34 @@ input.search{
 
 
 /* regole NAVBAR */
-#contact-list{
+nav .active-user, nav #add-contact{
+    position: fixed;
+    left: 0;
+    right: calc(100% - 400px);
+}
+
+#contact-section{
     width: 400px;
     height: 100vh;
     position: relative;
+    display: flex;
+    flex-direction: column;
     /* debug */
 }
 
 #navbar-searchbar{
     background-color: #ECEEED;
     padding: 10px;
+    position: fixed;
+    top: 70px;
+    right: calc(100% - 400px);
+    left:0;
+}
+
+.contact-list{
+    overflow-y: scroll;
+    margin-top: 129px;
+    flex-grow: 1;
 }
 
 .contact{
@@ -106,13 +127,6 @@ input.search{
     flex-direction: column;
     justify-content: flex-end;
 } 
-/* BONUS: aggiungi contatto */
-#add-contact>div:last-child{
-    flex-grow: 1;
-    border-radius: 20px;
-    padding: 10px;
-    background-color: white;
-}
 
 
 /* REGOLE MAIN */
@@ -131,13 +145,34 @@ main{
     left: 0;
     bottom: 0;
     right:0;
+    z-index: 99;
 }
 
 #start-background>div{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 100px 0;
+    height: 100%;
+}
+
+#start-background>div>div:last-child{
+    text-align: center;
+    line-height: 30px;
+}
+
+/* regole prima sezione main: utente attivo in alto */
+main .active-user{
+    position: fixed;
+    right:0;
+    left: 400px;
+    z-index: 19;
+}
+
+.vertical-bar{
+    height: 30px;
+    border: 1px solid gray;
+    margin: 0 10px;
 }
 
 /* regole seconda sezione main: visualizzazione messaggi */
@@ -146,10 +181,11 @@ main{
     background-image: url('./img/background.png');
     padding: 20px 0;
     overflow-y: scroll;
+    margin-top: 70px;
 }
 
 #message-view>div{
-    width: 70%;
+    width: 80%;
     margin:auto;
 }
 
@@ -159,7 +195,7 @@ main{
 
 .chat-message{
     position: relative;
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
     box-shadow: 1px 1px #888888;
     display: flex;
@@ -182,6 +218,7 @@ main{
     top: 10px;
     display: none;
     color: grey;
+    cursor: pointer;
 }
 
 .chat-message:hover i{
@@ -206,6 +243,7 @@ main{
     display: flex;
     justify-content: flex-start;
 }
+
 /* regole menu dropdown */
 .dropdown-menu{
     z-index: 9;
@@ -246,10 +284,13 @@ main{
     background-color: lightgray;
     display: flex;
     justify-content: space-between;
-    padding: 10px 30px;
-
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 400px;
 }
 
-#message-write>div:nth-child(3){
+#message-write .searchbar-container{
     flex-grow: 1;
 }

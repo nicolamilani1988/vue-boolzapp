@@ -162,15 +162,21 @@ function init(){
                 const messages = this.activeChat['messages'];
                 const newMsg = this.getNewMsg(this.newText,'sent');
                 
-                messages.push(newMsg);
+                if(this.newText.length>0){
+                    messages.push(newMsg);
+                }
+                const msgCheck = this.newText;
                 this.newText = '';
 
                 const activeContact = this.activeChat;
 
                 setTimeout( () => {
-                    const delayMessages = activeContact['messages'];
-                    const newMsgDelay = this.getNewMsg('Ok','received');
-                    delayMessages.push(newMsgDelay);
+                    if(msgCheck.length>0){
+                        const delayMessages = activeContact['messages'];
+                        const newMsgDelay = this.getNewMsg('Ok','received');
+                        delayMessages.push(newMsgDelay);
+                    }
+                    
                 },1000);
                
             },
