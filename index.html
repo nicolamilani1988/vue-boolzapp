@@ -57,7 +57,7 @@
                         <div>
                             <p>{{elem['name']}}</p>
                             <p class="small-text" >
-                                <span v-if="elem['messages'][0]['status'] == 'sent'"><i class="fas fa-check-double"></i></span>
+                                <span v-if="elem['messages'][elem['messages'].length-1]['status'] == 'sent'"><i class="fas fa-check-double"></i></span>
                                 <span v-else>{{elem['name']}}:</span>
                                 <span>{{lastMessage(elem)}}</span>
                             </p>
