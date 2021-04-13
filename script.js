@@ -13,17 +13,17 @@ function init(){
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
-                            text: 'Hai portato a spasso il cane?',
+                            text: 'Questo JavaScript non è una passeggiata',
                             status: 'sent'
                         },
                         {
                             date: '10/01/2020 15:50:00',
-                            text: 'Ricordati di dargli da mangiare',
+                            text: "A dire il vero, credo sia abbastanza duro",
                             status: 'sent'
                         },
                         {
                             date: '10/01/2020 16:15:22',
-                            text: 'Tutto fatto!',
+                            text: "That's what she said",
                             status: 'received'
                         }
                     ],
@@ -35,19 +35,35 @@ function init(){
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
-                            text: 'Ciao come stai?',
+                            text: 'Domanda: quale tipo di orso è il migliore?',
                             status: 'sent'
                         },
                         {
                             date: '20/03/2020 16:30:55',
-                            text: 'Bene grazie! Stasera ci vediamo?',
+                            text: 'Questa è una domanda ridicola..',
                             status: 'received'
                         },
                         {
                             date: '20/03/2020 16:35:00',
-                            text: 'Mi piacerebbe ma devo andare a fare la spesa.',
+                            text: 'FALSO! Il black bear è il migliore.',
                             status: 'sent'
-                        }
+                        },
+                        {
+                            date: '20/03/2020 16:37:00',
+                            text: 'Bear.Beets.Battlestar Galactica.',
+                            status: 'sent'
+                        },
+                        {
+                            date: '20/03/2020 16:40:00',
+                            text: "Che cosa stai facendo? Non farlo! Il furto d'identità non è un gioco, Nicola!",
+                            status: 'received'
+                        },
+                        {
+                            date: '20/03/2020 16:48:00',
+                            text: "Milioni di persone ne soffrono ogni anno",
+                            status: 'received'
+                        },
+
                     ],
                 },
                 {
@@ -56,19 +72,19 @@ function init(){
                     visible: true,
                     messages: [
                         {
-                            date: '28/03/2020 10:10:40',
-                            text: 'La Marianna va in campagna',
-                            status: 'received'
-                        },
-                        {
-                            date: '28/03/2020 10:20:10',
-                            text: 'Sicuro di non aver sbagliato chat?',
+                            date: '28/03/2020 05:10:40',
+                            text: 'Ciao Stanley, come stai ?',
                             status: 'sent'
                         },
                         {
-                            date: '28/03/2020 16:15:22',
-                            text: 'Ah scusa!',
+                            date: '28/03/2020 05:20:10',
+                            text: 'Sono le 5 del mattino! Have you lost your mind???',
                             status: 'received'
+                        },
+                        {
+                            date: '28/03/2020 05:45:22',
+                            text: 'Ah scusa!',
+                            status: 'sent'
                         }
                     ],
                 },
@@ -84,7 +100,7 @@ function init(){
                         },
                         {
                             date: '10/01/2020 15:50:00',
-                            text: 'Si, ma preferirei andare al cinema',
+                            text: "'Bene, se c'è da alcolizzarsi io ci sono",
                             status: 'received',
                         }
                     ],   
@@ -185,8 +201,19 @@ function init(){
               
                 const dateString  = dayjs(val, "DD/MM/YYYY HH:mm:ss").format('HH:mm');
                 return dateString;
-            }
+            },
+            dayFormat: function(val){
+                dayjs.extend(window.dayjs_plugin_customParseFormat);
+              
+                const dateString  = dayjs(val, "DD/MM/YYYY HH:mm:ss").format('D MMMM');
+                return dateString;
+            },
         },
+
+        updated(){
+            let container = this.$el.querySelector('#message-view');
+            container.scrollTop = container.scrollHeight;
+        }
 
         
 

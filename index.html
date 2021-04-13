@@ -124,7 +124,7 @@
                                     <p @click= "infoMsg(index)">Info messaggio</p>
                                 </div>
                                 <div v-if="elem === activeMsg && isInfoVisible" class="dropdown-menu" @mouseleave="isInfoVisible = false">
-                                    <div>Messaggio inviato alle {{elem['date'] | dateFormat}}</div>
+                                    <div>Messaggio inviato il {{elem['date'] | dayFormat}} alle {{elem['date'] | dateFormat}}</div>
                                     <div v-if="elem['status'] == 'sent'">Messaggio inviato da: Me</div>
                                     <div v-else>Messaggio inviato da: {{activeChat['name']}}</div>
                                 </div>

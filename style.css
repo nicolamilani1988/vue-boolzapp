@@ -138,6 +138,7 @@ main{
     flex-grow: 1;
     background-image: url('./img/background.png');
     padding: 20px 0;
+    overflow-y: scroll;
 }
 
 #message-view>div{
@@ -234,6 +235,7 @@ main{
     display: flex;
     justify-content: space-between;
     padding: 10px 30px;
+
 }
 
 #message-write>div:nth-child(3){
