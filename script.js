@@ -113,31 +113,47 @@ function init(){
                 
                 this.startTheme = 'hide';
                 this.activeChat = this.contacts[index];
+                console.log(this.activeChat['messages'][0]['date'])
                 
+            },
+            getDate : function(data){
+                const currentdate = data; 
+                let date = currentdate.getDate() + "/"
+                + (((currentdate.getMonth()+1)<10 ? '0':'')+ (currentdate.getMonth()+1))  + "/" 
+                + currentdate.getFullYear() + " "  
+                + currentdate.getHours() + ":"  
+                + ((currentdate.getMinutes()<10 ?'0':'')+currentdate.getMinutes()) + ":" + ((currentdate.getSeconds()<10 ?'0':'')+currentdate.getSeconds());
+                return date;
+            },
+            getNewMsg: function (text, status){
+                
+                const currentDate = new Date();
+                const msgData = this.getDate(currentDate);
+                const message = text;
+                const newMessage = {
+                    date: msgData,
+                    text: message,
+                    status: status
+                };
+                return newMessage;
             },
             addText: function(){
-                
                 const messages = this.activeChat['messages'];
-                const data = new Date().toLocaleString();
-                const message = this.newText;
-                const newMessage = {
-                    date: data,
-                    text: message,
-                    status: "sent"
-                };
-                messages.push(newMessage);
+                const newMsg = this.getNewMsg(this.newText,'sent');
+                
+                messages.push(newMsg);
                 this.newText = '';
-                setTimeout(function(){
-                   const userText = "ok" ;
-                   const userMessage = {
-                       date: data,
-                       text: userText,
-                       status: "received"
-                   };
-                   messages.push(userMessage);
-                },1000);
 
+                const activeContact = this.activeChat;
+
+                setTimeout( () => {
+                    const delayMessages = activeContact['messages'];
+                    const newMsgDelay = this.getNewMsg('Ok','received');
+                    delayMessages.push(newMsgDelay);
+                },1000);
+               
             },
+            
             showMenu: function(elem){
 
                 this.activeMsg = elem;
