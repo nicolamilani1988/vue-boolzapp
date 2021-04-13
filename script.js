@@ -119,9 +119,11 @@ function init(){
             newText: '', // messaggio digitato
             userSearch: '', // caratteri searchbar contatti
             startTheme: '', //classe per far sparire la schermata
-            activeMsg : '',
-            isVisible : false,
-            isInfoVisible : false,
+            activeMsg : '', //identifico msg del menu tendina
+            isVisible : false, // menu tendina visibile
+            isInfoVisible : false, // info msg visibile
+            isAddbarVisible: false, //input per aggiungere contatto
+            newName: '',
         },
 
         methods:{
@@ -191,6 +193,26 @@ function init(){
             },
             lastDate: function(elem){
                 return elem['messages'][elem['messages'].length-1]['date'];
+            },
+            showSearchBar: function(){
+                this.isAddbarVisible = !this.isAddbarVisible;
+                return this.isAddbarVisible;
+            },
+            addContact: function(){
+                const newContact = {
+                    name: this.newName,
+                    avatar: '_anonym',
+                    visible: true,
+                    messages: [{
+                        date: this.getDate(new Date()),
+                        text: 'Ciao, sono nuovo su Whatsapp',
+                        status: 'received',
+                    }],
+                };
+                
+                this.contacts.push(newContact);
+                this.newName = '';
+                
             }
 
         },

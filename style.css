@@ -31,7 +31,7 @@ i.fas.fa-check-double{
 }
 
 /* regole condivise */
-.active-user{
+.active-user, #add-contact{
     background-color: lightgray;
     display: flex;
     justify-content: space-between;
@@ -57,7 +57,7 @@ i.fas.fa-check-double{
     background-color: white;
 }
 
-#navbar-searchbar input, #message-write input{
+#navbar-searchbar input, #message-write input, #add-contact input{
     border: none;
     padding: 0 10px;
     outline: none;
@@ -75,8 +75,8 @@ i.fas.fa-check-double{
 #contact-list{
     width: 400px;
     height: 100vh;
+    position: relative;
     /* debug */
-    border: 1px solid red;
 }
 
 #navbar-searchbar{
@@ -104,6 +104,13 @@ i.fas.fa-check-double{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+} 
+/* BONUS: aggiungi contatto */
+#add-contact>div:last-child{
+    flex-grow: 1;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: white;
 }
 
 
@@ -111,7 +118,6 @@ i.fas.fa-check-double{
 main{
     position: relative;
     flex-grow: 1;
-    border: 1px solid blue;
     display: flex;
     flex-direction: column;
 }
@@ -142,12 +148,11 @@ main{
 }
 
 #message-view>div{
-    width: 60%;
+    width: 70%;
     margin:auto;
 }
 
 #message-view>div li{
-    border: 1px solid blue;
     padding: 10px 0;
 }
 

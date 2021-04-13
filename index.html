@@ -28,14 +28,22 @@
         <nav id="contact-list">
 
             <!-- parte utente -->
-            <section class="active-user">
+            <section class="active-user" v-if="!isAddbarVisible">
                 <img src="./img/me.jpg" alt="" width="50px" height = "50px">
                 <div>
                     <i class="fas fa-circle-notch"></i>
-                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-plus" @click="showSearchBar" style="cursor:pointer"></i>
                     <i class="fas fa-ellipsis-h"></i>
-                </div>              
+                </div>             
             </section>
+
+            <!-- BONUS : Aggiungi contatto alla lista -->
+            <div id="add-contact" v-if="isAddbarVisible" @mouseleave="showSearchBar">
+                <img src="./img/pic_anonym.jpg" alt="" width="50px" height = "50px">
+                <div>
+                    <input type="text" v-model= "newName" @keyup.enter="addContact" placeholder="Scrivi il nome e premi invio">
+                </div>
+            </div>
 
             <!-- barra ricerca contatti -->
             <section id="navbar-searchbar">
