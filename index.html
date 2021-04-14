@@ -119,7 +119,15 @@
                         </div>
                     </transition>               
                     <i class="fas fa-search" @click="showMsgSearchbar" style="cursor:pointer"></i>
-                    <i class="fas fa-ellipsis-h"></i>
+                    <i class="fas fa-ellipsis-h" style="cursor:pointer" @click="showSettingsBar"></i>
+                    <!-- BONUS: settings dropdown-menu -->
+                    <transition name="fade-away">
+                        <div class="dropdown-menu" v-if="isSettingsVisible" @mouseleave = "isSettingsVisible = false">
+                            <p>Cambia sfondo</p>
+                            <p>Svuota chat</p>
+                            <p>Elimina contatto</p>
+                        </div>
+                    </transition>    
                 </div>
             </section>
 

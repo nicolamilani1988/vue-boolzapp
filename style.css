@@ -122,7 +122,6 @@ nav .active-user{
 .contact{
     width: 100%;
     background-color: white;
-    color: light
     padding: 10px;
     display: flex;
 }
@@ -187,6 +186,12 @@ main .active-user{
     height: 30px;
     border: 1px solid gray;
     margin: 0 10px;
+}
+
+main .active-user .dropdown-menu{
+    position: absolute;
+    right: 20px;
+    top: 60px;
 }
 
 /* regole seconda sezione main: visualizzazione messaggi */

@@ -125,6 +125,8 @@ function init(){
             isMsgBarVisible: false, // ricerca caratteri msg visibile/nascosto
             msgSearch: '', //caratteri digitati da cercare tra i messaggi
             pickedMsg: [], // controllo msg cercati
+            isSettingsVisible: false,
+
         },
 
         
@@ -235,6 +237,11 @@ function init(){
                         this.pickedMsg.push(message['text'].toLowerCase());
                     }
                 }                  
+            },
+
+            showSettingsBar:function(){
+                this.isSettingsVisible = !this.isSettingsVisible;
+                return this.isSettingsVisible;
             }
         },
 
