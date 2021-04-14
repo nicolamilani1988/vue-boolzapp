@@ -107,37 +107,33 @@ function init(){
                 },      
                 
             ],
-            
-            
+                       
             activeChat: {
                 name: '',
                 avatar: '_3',
                 visible: true,
                 messages: [],
-            }, // var = obj attivo. Lo imposto con un fake perchè mi dava errore in gmail al caricam della foto, riga 66
-            
+            }, // var = obj attivo. Lo imposto con un fake perchè mi dava errore in gmail al caricam della foto, riga 65          
             newText: '', // messaggio digitato
             userSearch: '', // caratteri searchbar contatti
-            startTheme: '', //classe per far sparire la schermata
+            startTheme: '', //classe per far sparire la schermata         
+            isMsgMenuVisible : false, // menu tendina msg visibile/nascosto
+            isInfoVisible : false, // info msg visibile/nascosto
             activeMsg : '', //identifico msg del menu tendina
-            isVisible : false, // menu tendina visibile
-            isInfoVisible : false, // info msg visibile
-            isAddbarVisible: false, //input per aggiungere contatto
-            newName: '', // nome da aggiungere con input
-            msgSearch: '', //cerco tra i messaggi
-            isMsgBarVisible: false,
+            isAddbarVisible: false, //input per aggiungere contatto visibile/nascosto
+            newName: '', // nome da aggiungere con input          
+            isMsgBarVisible: false, // ricerca caratteri msg visibile/nascosto
+            msgSearch: '', //caratteri digitati da cercare tra i messaggi
             pickedMsg: [],
         },
 
         methods:{
-            getActiveChat: function(index){
-                
+            getActiveChat: function(index){ // stabilisco la chat attiva e nascondo schermata avvio
                 this.startTheme = 'hide';
                 this.activeChat = this.contacts[index];
-                console.log(this.activeChat['messages'][0]['date'])
-                
             },
-            getDate : function(data){
+
+            getDate : function(data){ // elaboro date con formato corretto
                 const currentdate = data; 
                 let date = currentdate.getDate() + "/"
                 + (((currentdate.getMonth()+1)<10 ? '0':'')+ (currentdate.getMonth()+1))  + "/" 
@@ -146,8 +142,8 @@ function init(){
                 + ((currentdate.getMinutes()<10 ?'0':'')+currentdate.getMinutes()) + ":" + ((currentdate.getSeconds()<10 ?'0':'')+currentdate.getSeconds());
                 return date;
             },
-            getNewMsg: function (text, status){
-                
+
+            getNewMsg: function (text, status){ //elaboro messaggio da inserire nei messages  
                 const currentDate = new Date();
                 const msgData = this.getDate(currentDate);
                 const message = text;
@@ -158,16 +154,16 @@ function init(){
                 };
                 return newMessage;
             },
-            addText: function(){
+
+            addText: function(){ // aggiungo msg e ottengo risposta
                 const messages = this.activeChat['messages'];
-                const newMsg = this.getNewMsg(this.newText,'sent');
-                
+                const newMsg = this.getNewMsg(this.newText,'sent');               
                 if(this.newText.length>0){
                     messages.push(newMsg);
                 }
+
                 const msgCheck = this.newText;
                 this.newText = '';
-
                 const activeContact = this.activeChat;
 
                 setTimeout( () => {
@@ -175,31 +171,29 @@ function init(){
                         const delayMessages = activeContact['messages'];
                         const newMsgDelay = this.getNewMsg('Ok','received');
                         delayMessages.push(newMsgDelay);
-                    }
-                    
-                },1000);
-               
+                    }                  
+                },1000);              
             },
             
-            showMenu: function(elem){
-
+            showMenu: function(elem){ // apro/chiudo menu dropdown
                 this.activeMsg = elem;
-                this.isVisible = !this.isVisible;
-                console.log(this.isVisible); 
-                
-            },              
-            deleteMsg: function(index){
+                this.isMsgMenuVisible = !this.isMsgMenuVisible;            
+            },    
+
+            deleteMsg: function(index){ //menu dropdown --> cancella messaggio
                 const messages = this.activeChat['messages'];
-                messages.splice(index,1);
-                
+                messages.splice(index,1);               
             },
-            infoMsg: function (index){
-                this.isVisible = false;
+
+            infoMsg: function (){ //menu dropdown --> info messaggio
+                this.isMsgMenuVisible = false;
                 this.isInfoVisible = true;
             },
+
             lastMessage: function(elem){
                 return elem['messages'][elem['messages'].length-1]['text'];
             },
+            
             lastDate: function(elem){
                 return elem['messages'][elem['messages'].length-1]['date'];
             },

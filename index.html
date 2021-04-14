@@ -142,7 +142,7 @@
                                 <!-- freccia del dropdown-menu -->
                                 <i @click="showMenu(elem)" class="fas fa-chevron-down"></i>
                                 <!-- menu tendina nascosto -->
-                                <div v-if="elem === activeMsg && isVisible" class="dropdown-menu" @mouseleave="isVisible = false">
+                                <div v-if="elem === activeMsg && isMsgMenuVisible" class="dropdown-menu" @mouseleave="isMsgMenuVisible = false">
                                     <p @click= "deleteMsg(index)">Cancella messaggio</p>
                                     <p @click= "infoMsg(index)">Info messaggio</p>
                                 </div>
