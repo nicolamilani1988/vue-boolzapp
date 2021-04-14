@@ -126,7 +126,7 @@ function init(){
             msgSearch: '', //caratteri digitati da cercare tra i messaggi
             pickedMsg: [], // controllo msg cercati
             isSettingsVisible: false,
-            activeIndex: '',
+            activeIndex: '', // individuo indice dell'activeChat
         },
 
         
@@ -240,12 +240,12 @@ function init(){
                 }                  
             },
 
-            showSettingsBar:function(){
+            showSettingsBar:function(){ // mostra/nascondi menu settings
                 this.isSettingsVisible = !this.isSettingsVisible;
                 return this.isSettingsVisible;
             },
 
-            deleteAllMsg:function(){
+            deleteAllMsg:function(){ // rimuovi tutti i msg della chat
                 //const activeContact = this.contacts[this.activeIndex];
                 // const messages = activeContact['messages'];
                 // for(let i = 0;i<messages.length;i++){
@@ -256,7 +256,7 @@ function init(){
                 //         status: message['status'],
                 //     })
                 // }   
-                
+                alert("sei sicuro di voler eliminare i messaggi?");
                 const messages = this.activeChat['messages'];
                 for (let i = 0;i<messages.length; i++){
                     const message = messages[i];
@@ -267,6 +267,12 @@ function init(){
                      })
                 }
             },
+
+            deleteContact: function(){ // cancella contatto
+                alert("sei sicuro di voler eliminare questo contatto?");
+                this.contacts.splice(this.activeIndex,1);
+                this.activeChat = this.contacts[0];
+            }
         },
 
 

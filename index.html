@@ -125,7 +125,7 @@
                         <div class="dropdown-menu" v-if="isSettingsVisible" @mouseleave = "isSettingsVisible = false">
                             <p>Cambia sfondo</p>
                             <p @click="deleteAllMsg">Svuota chat</p>
-                            <p>Elimina contatto</p>
+                            <p @click="deleteContact">Elimina contatto </p>
                         </div>
                     </transition>    
                 </div>
