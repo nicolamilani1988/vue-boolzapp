@@ -126,7 +126,7 @@ function init(){
             msgSearch: '', //caratteri digitati da cercare tra i messaggi
             pickedMsg: [], // controllo msg cercati
             isSettingsVisible: false,
-
+            activeIndex: '',
         },
 
         
@@ -134,6 +134,7 @@ function init(){
             getActiveChat: function(index){ // stabilisco la chat attiva e nascondo schermata avvio
                 this.startTheme = 'hide';
                 this.activeChat = this.contacts[index];
+                this.activeIndex = index;
             },
 
             getDate : function(data){ // elaboro date con formato corretto
@@ -242,7 +243,30 @@ function init(){
             showSettingsBar:function(){
                 this.isSettingsVisible = !this.isSettingsVisible;
                 return this.isSettingsVisible;
-            }
+            },
+
+            deleteAllMsg:function(){
+                //const activeContact = this.contacts[this.activeIndex];
+                // const messages = activeContact['messages'];
+                // for(let i = 0;i<messages.length;i++){
+                //     const message = messages[i];
+                //     messages.splice(i,1,{ 
+                //         date: this.getDate(new Date()),
+                //         text: 'Messaggio rimosso',
+                //         status: message['status'],
+                //     })
+                // }   
+                
+                const messages = this.activeChat['messages'];
+                for (let i = 0;i<messages.length; i++){
+                    const message = messages[i];
+                     messages.splice(i,1,{ 
+                         date: this.getDate(new Date()),
+                         text: 'Messaggio rimosso',
+                         status: message['status'],
+                     })
+                }
+            },
         },
 
 

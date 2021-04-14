@@ -124,7 +124,7 @@
                     <transition name="fade-away">
                         <div class="dropdown-menu" v-if="isSettingsVisible" @mouseleave = "isSettingsVisible = false">
                             <p>Cambia sfondo</p>
-                            <p>Svuota chat</p>
+                            <p @click="deleteAllMsg">Svuota chat</p>
                             <p>Elimina contatto</p>
                         </div>
                     </transition>    
