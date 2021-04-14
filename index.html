@@ -41,12 +41,14 @@
             </section>
 
             <!-- BONUS : Aggiungi contatto alla lista -->
-            <section id="add-contact" v-if="isAddbarVisible" @mouseleave="showSearchBar">
-                <img class="icon"  src="./img/pic_anonym.jpg" alt="">
-                <div class="searchbar-container">
-                    <input class="search-bar" type="text" v-model= "newName" @keyup.enter="addContact" placeholder="Scrivi il nome e premi invio">
-                </div>
-            </section>
+            <transition name="fade">
+                <section id="add-contact" v-if="isAddbarVisible" @mouseleave="showSearchBar">
+                    <img class="icon"  src="./img/pic_anonym.jpg" alt="">
+                    <div class="searchbar-container">
+                        <input class="search-bar" type="text" v-model= "newName" @keyup.enter="addContact" placeholder="Scrivi il nome e premi invio">
+                    </div>
+                </section>
+            </transition>    
 
             <!-- barra ricerca contatti -->
             <section id="navbar-searchbar">
@@ -111,9 +113,11 @@
                     <i class="fas fa-video"></i>
                     <i class="fas fa-phone-alt"></i>
                     <div class="vertical-bar"></div>
-                    <div v-if="isMsgBarVisible" class="searchbar-container">
-                        <input  class="search-bar" type="text" placeholder="Cerca messaggi e premi invio" v-model="msgSearch" @keyup.enter="pickMsg">
-                    </div>
+                    <transition name="fade">
+                        <div v-if="isMsgBarVisible" class="searchbar-container">
+                            <input  class="search-bar" type="text" placeholder="Cerca messaggi e premi invio" v-model="msgSearch" @keyup.enter="pickMsg">
+                        </div>
+                    </transition>               
                     <i class="fas fa-search" @click="showMsgSearchbar" style="cursor:pointer"></i>
                     <i class="fas fa-ellipsis-h"></i>
                 </div>
@@ -142,16 +146,18 @@
                                 <!-- freccia del dropdown-menu -->
                                 <i @click="showMenu(elem)" class="fas fa-chevron-down"></i>
                                 <!-- menu tendina nascosto -->
-                                <div v-if="elem === activeMsg && isMsgMenuVisible" class="dropdown-menu" @mouseleave="isMsgMenuVisible = false">
-                                    <p @click= "deleteMsg(index)">Cancella messaggio</p>
-                                    <p @click= "infoMsg(index)">Info messaggio</p>
-                                </div>
-                                <!-- BONUS: info messaggio selezionato -->
-                                <div v-if="elem === activeMsg && isInfoVisible" class="dropdown-menu" @mouseleave="isInfoVisible = false">
-                                    <div>Messaggio inviato il {{elem['date'] | dayFormat}} alle {{elem['date'] | dateFormat}}</div>
-                                    <div v-if="elem['status'] == 'sent'">Messaggio inviato da: Me</div>
-                                    <div v-else>Messaggio inviato da: {{activeChat['name']}}</div>
-                                </div>
+                                <transition name="fade-away">
+                                    <div v-if="elem === activeMsg && isMsgMenuVisible" class="dropdown-menu" @mouseleave="isMsgMenuVisible = false">
+                                        <p @click= "deleteMsg(index)">Cancella messaggio</p>
+                                        <p @click= "infoMsg(index)">Info messaggio</p>
+                                    </div>
+                                    <!-- BONUS: info messaggio selezionato -->
+                                    <div v-if="elem === activeMsg && isInfoVisible" class="dropdown-menu" @mouseleave="isInfoVisible = false">
+                                        <div>Messaggio inviato il {{elem['date'] | dayFormat}} alle {{elem['date'] | dateFormat}}</div>
+                                        <div v-if="elem['status'] == 'sent'">Messaggio inviato da: Me</div>
+                                        <div v-else>Messaggio inviato da: {{activeChat['name']}}</div>
+                                    </div>
+                                </transition>                               
                             </div>                         
                         </li>
                     </ul>                  

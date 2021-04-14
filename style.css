@@ -72,9 +72,27 @@ input.search-bar{
     display: none;
 }
 
+/* transizioni */
+.fade-enter-active, .fade-leave-active,.fade-away-enter-active {
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to, .fade-away-enter{
+opacity: 0;
+}
 
 
 /* regole NAVBAR */
+#contact-section{
+    width: 400px;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid lightslategray;
+    /* debug */
+}
+
 nav .active-user, nav #add-contact{
     position: fixed;
     left: 0;
@@ -82,16 +100,7 @@ nav .active-user, nav #add-contact{
 }
 
 nav .active-user{
-    border-right: 1px solid gray;
-}
-
-#contact-section{
-    width: 400px;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    /* debug */
+    border-right: 1px solid lightslategray;
 }
 
 #navbar-searchbar{
@@ -101,19 +110,19 @@ nav .active-user{
     top: 70px;
     right: calc(100% - 400px);
     left:0;
+    border-right: 1px solid lightslategray;
 }
 
 .contact-list{
     overflow-y: scroll;
     margin-top: 129px;
     flex-grow: 1;
-    border-right: 1px solid lightgray;
 }
 
 .contact{
     width: 100%;
     background-color: white;
-    border-top: 1px solid lightgray;
+    color: light
     padding: 10px;
     display: flex;
 }
