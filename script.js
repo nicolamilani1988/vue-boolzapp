@@ -127,6 +127,7 @@ function init(){
             pickedMsg: [], // controllo msg cercati
             isSettingsVisible: false,
             activeIndex: '', // individuo indice dell'activeChat
+            isBgLight: true,
         },
 
         
@@ -202,11 +203,6 @@ function init(){
                 return elem['messages'][elem['messages'].length-1]['date'];
             },
 
-            showSearchBar: function(){ //mostra barra per aggiungere contatti
-                this.isAddbarVisible = !this.isAddbarVisible;
-                return this.isAddbarVisible;
-            },
-
             addContact: function(){ //aggiungi contatto alla lista
                 if(this.newName.length>0){
                     const newContact = {
@@ -224,11 +220,6 @@ function init(){
                 }                           
             },
 
-            showMsgSearchbar: function(){ //mostra barra ricerca msg
-                this.isMsgBarVisible = !this.isMsgBarVisible;
-                return this.isMsgBarVisible;
-            },
-
             pickMsg: function(){ // controllo msg cercati e li evidenzio
                 this.pickedMsg = [];
                 const messages = this.activeChat['messages'];
@@ -238,11 +229,6 @@ function init(){
                         this.pickedMsg.push(message['text'].toLowerCase());
                     }
                 }                  
-            },
-
-            showSettingsBar:function(){ // mostra/nascondi menu settings
-                this.isSettingsVisible = !this.isSettingsVisible;
-                return this.isSettingsVisible;
             },
 
             deleteAllMsg:function(){ // rimuovi tutti i msg della chat
@@ -272,7 +258,7 @@ function init(){
                 alert("sei sicuro di voler eliminare questo contatto?");
                 this.contacts.splice(this.activeIndex,1);
                 this.activeChat = this.contacts[0];
-            }
+            },
         },
 
 

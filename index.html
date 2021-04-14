@@ -35,14 +35,14 @@
                 <img class="icon" src="./img/me.jpg" alt="">
                 <div>
                     <i class="fas fa-circle-notch"></i>
-                    <i class="fas fa-plus" @click="showSearchBar" style="cursor:pointer"></i>
+                    <i class="fas fa-plus" @click="isAddbarVisible = !isAddbarVisible" style="cursor:pointer"></i>
                     <i class="fas fa-ellipsis-h"></i>
                 </div>             
             </section>
 
             <!-- BONUS : Aggiungi contatto alla lista -->
             <transition name="fade">
-                <section id="add-contact" v-if="isAddbarVisible" @mouseleave="showSearchBar">
+                <section id="add-contact" v-if="isAddbarVisible" @mouseleave="isAddbarVisible = !isAddbarVisible">
                     <img class="icon"  src="./img/pic_anonym.jpg" alt="">
                     <div class="searchbar-container">
                         <input class="search-bar" type="text" v-model= "newName" @keyup.enter="addContact" placeholder="Scrivi il nome e premi invio">
@@ -118,21 +118,21 @@
                             <input  class="search-bar" type="text" placeholder="Cerca messaggi e premi invio" v-model="msgSearch" @keyup.enter="pickMsg">
                         </div>
                     </transition>               
-                    <i class="fas fa-search" @click="showMsgSearchbar" style="cursor:pointer"></i>
-                    <i class="fas fa-ellipsis-h" style="cursor:pointer" @click="showSettingsBar"></i>
+                    <i class="fas fa-search" @click="isMsgBarVisible = !isMsgBarVisible" style="cursor:pointer"></i>
+                    <i class="fas fa-ellipsis-h" style="cursor:pointer" @click="isSettingsVisible = !isSettingsVisible"></i>
                     <!-- BONUS: settings dropdown-menu -->
                     <transition name="fade-away">
-                        <div class="dropdown-menu" v-if="isSettingsVisible" @mouseleave = "isSettingsVisible = false">
-                            <p>Cambia sfondo</p>
+                        <div class="dropdown-menu" v-if="isSettingsVisible" @mouseleave = "isSettingsVisible = false">                          
                             <p @click="deleteAllMsg">Svuota chat</p>
                             <p @click="deleteContact">Elimina contatto </p>
+                            <p @click="isBgLight = !isBgLight">Cambia sfondo</p>
                         </div>
                     </transition>    
                 </div>
             </section>
 
             <!-- visualizzazione messaggi -->
-            <section id="message-view">               
+            <section id="message-view" :class="isBgLight == true ? 'bg-img-light' : 'bg-img-dark'">            
                 <div>                                     
                     <ul>
                         <li v-for="(elem,index) in activeChat['messages']" :class="elem['status']">

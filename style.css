@@ -72,6 +72,14 @@ input.search-bar{
     display: none;
 }
 
+.bg-img-light{
+    background-image: url('./img/background.png');
+}
+
+.bg-img-dark{
+    background-image: url('./img/background-dark.jpg');
+}
+
 /* transizioni */
 .fade-enter-active, .fade-leave-active,.fade-away-enter-active {
     transition: opacity .5s;
@@ -197,7 +205,6 @@ main .active-user .dropdown-menu{
 /* regole seconda sezione main: visualizzazione messaggi */
 #message-view{
     flex-grow: 1;
-    background-image: url('./img/background.png');
     padding: 20px 0;
     overflow-y: scroll;
     margin-top: 70px;
