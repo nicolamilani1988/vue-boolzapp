@@ -21,7 +21,7 @@ img.icon{
 }
 
 .small-text{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: gray;
 }
 
@@ -81,6 +81,10 @@ nav .active-user, nav #add-contact{
     right: calc(100% - 400px);
 }
 
+nav .active-user{
+    border-right: 1px solid gray;
+}
+
 #contact-section{
     width: 400px;
     height: 100vh;
@@ -103,6 +107,7 @@ nav .active-user, nav #add-contact{
     overflow-y: scroll;
     margin-top: 129px;
     flex-grow: 1;
+    border-right: 1px solid lightgray;
 }
 
 .contact{
