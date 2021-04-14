@@ -124,9 +124,10 @@ function init(){
             newName: '', // nome da aggiungere con input          
             isMsgBarVisible: false, // ricerca caratteri msg visibile/nascosto
             msgSearch: '', //caratteri digitati da cercare tra i messaggi
-            pickedMsg: [],
+            pickedMsg: [], // controllo msg cercati
         },
 
+        
         methods:{
             getActiveChat: function(index){ // stabilisco la chat attiva e nascondo schermata avvio
                 this.startTheme = 'hide';
@@ -190,38 +191,42 @@ function init(){
                 this.isInfoVisible = true;
             },
 
-            lastMessage: function(elem){
+            lastMessage: function(elem){ //visualizza ultimo msg
                 return elem['messages'][elem['messages'].length-1]['text'];
             },
             
-            lastDate: function(elem){
+            lastDate: function(elem){ // visulizza ultima data
                 return elem['messages'][elem['messages'].length-1]['date'];
             },
-            showSearchBar: function(){
+
+            showSearchBar: function(){ //mostra barra per aggiungere contatti
                 this.isAddbarVisible = !this.isAddbarVisible;
                 return this.isAddbarVisible;
             },
-            addContact: function(){
-                const newContact = {
-                    name: this.newName,
-                    avatar: '_anonym',
-                    visible: true,
-                    messages: [{
-                        date: this.getDate(new Date()),
-                        text: 'Ciao, sono nuovo su Whatsapp',
-                        status: 'received',
-                    }],
-                };
-                
-                this.contacts.push(newContact);
-                this.newName = '';
-                
+
+            addContact: function(){ //aggiungi contatto alla lista
+                if(this.newName.length>0){
+                    const newContact = {
+                        name: this.newName,
+                        avatar: '_anonym',
+                        visible: true,
+                        messages: [{
+                            date: this.getDate(new Date()),
+                            text: 'Ciao, sono nuovo su Whatsapp',
+                            status: 'received',
+                        }],
+                    };               
+                    this.contacts.push(newContact);
+                    this.newName = '';
+                }                           
             },
-            showMsgSearchbar: function(){
+
+            showMsgSearchbar: function(){ //mostra barra ricerca msg
                 this.isMsgBarVisible = !this.isMsgBarVisible;
                 return this.isMsgBarVisible;
             },
-            pickMsg: function(){
+
+            pickMsg: function(){ // controllo msg cercati e li evidenzio
                 this.pickedMsg = [];
                 const messages = this.activeChat['messages'];
                 for(let i = 0;i<messages.length;i++){
@@ -229,14 +234,10 @@ function init(){
                     if(message['text'].toLowerCase().includes(this.msgSearch.toLowerCase())){
                         this.pickedMsg.push(message['text'].toLowerCase());
                     }
-                    console.log(this.pickedMsg);
-                }   
-                
-                
+                }                  
             }
-
-
         },
+
 
         filters: {
             dateFormat: function(val){
@@ -253,13 +254,11 @@ function init(){
             },
         },
 
-        updated(){
-            let container = this.$el.querySelector('#message-view');
-            container.scrollTop = container.scrollHeight;
-        }
-
-        
-
+        // updated(){
+        //     let container = this.$el.querySelector('#message-view');
+        //     container.scrollTop = container.scrollHeight;
+        // }
+ 
     })
 
 }
