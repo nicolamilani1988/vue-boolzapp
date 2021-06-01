@@ -14,8 +14,9 @@
     <script src="https://unpkg.com/dayjs@1.8.20/dayjs.min.js"></script>
     <script src="https://unpkg.com/dayjs@1.8.20/plugin/customParseFormat.js"></script>
     <!-- google font -->
+    <!-- google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- my css -->
@@ -69,7 +70,7 @@
                         </div>
                         <!-- user name +msg -->
                         <div>
-                            <p>{{elem['name']}}</p>
+                            <p><strong>{{elem['name']}}</strong></p>
                             <p class="small-text" >
                                 <span v-if="elem['messages'][elem['messages'].length-1]['status'] == 'sent'"><i class="fas fa-check-double"></i></span>
                                 <span v-else>{{elem['name']}}:</span>
@@ -108,7 +109,7 @@
             <section class="active-user" @mouseleave="isMsgBarVisible = false">
                 <div>
                     <img class="icon" :src="'./img/pic'+activeChat.avatar+'.jpg'" alt="">
-                    <span>{{activeChat['name']}}</span>
+                    <span><strong>{{activeChat['name']}}</strong></span>
                 </div>
                 <div>
                     <i class="fas fa-video"></i>
