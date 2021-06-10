@@ -12,6 +12,26 @@ function init(){
                     visible: true,
                     messages: [
                         {
+                            date: '10/01/2020 15:10:55',
+                            text: "We must only discuss work-related things",
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:11:55',
+                            text: "This is my retirement from comedy.I will no longer do any of old jokes.",
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:12:55',
+                            text: "Does that include 'That's What She Said'?",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:19:55',
+                            text: "Yesh.",
+                            status: 'received'
+                        },
+                        {
                             date: '10/01/2020 15:30:55',
                             text: "That's really hard. Do you think you can go all day?",
                             status: 'sent'
@@ -104,7 +124,119 @@ function init(){
                             status: 'received',
                         }
                     ],   
-                },      
+                }, 
+                {
+                    name: 'Ryan',
+                    avatar: '_5',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            text: "That's really hard. Do you think you can go all day?",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            text: "Well, you always left me satisfied and smiling",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 16:15:22',
+                            text: "I'm fine",
+                            status: 'received'
+                        }
+                    ],
+                },
+                {
+                    name: 'Pam',
+                    avatar: '_6',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            text: "That's really hard. Do you think you can go all day?",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 15:50:00',
+                            text: "Well, you always left me satisfied and smiling",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 20:55:22',
+                            text: "Well",
+                            status: 'sent'
+                        }
+                    ],
+                }, 
+                {
+                    name: 'Jim',
+                    avatar: '_7',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            text: "That's really hard. Do you think you can go all day?",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 14:59:00',
+                            text: "Well, you always left me satisfied and smiling",
+                            status: 'sent'
+                        }
+                    ],
+                }, 
+                {
+                    name: 'Kelly',
+                    avatar: '_8',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            text: "That's really hard. Do you think you can go all day?",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 09:20:00',
+                            text: "I am not done",
+                            status: 'received'
+                        }
+                    ],
+                }, 
+                {
+                    name: 'Oscar',
+                    avatar: '_9',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            text: "That's really hard. Do you think you can go all day?",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 21:00:00',
+                            text: "Thank you",
+                            status: 'received'
+                        }
+                    ],
+                },  
+                {
+                    name: 'Creed',
+                    avatar: '_10',
+                    visible: true,
+                    messages: [
+                        {
+                            date: '10/01/2020 15:30:55',
+                            text: "That's really hard. Do you think you can go all day?",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 09:50:00',
+                            text: "Bobbity",
+                            status: 'received'
+                        }
+                    ],
+                },   
                 
             ],
                        

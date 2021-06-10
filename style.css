@@ -208,6 +208,7 @@ main .active-user .dropdown-menu{
     padding: 20px 0;
     overflow-y: scroll;
     margin-top: 70px;
+    margin-bottom: 65px;
 }
 
 #message-view>div{
@@ -315,6 +316,7 @@ main .active-user .dropdown-menu{
     bottom: 0;
     right: 0;
     left: 400px;
+    height: 65px;
 }
 
 #message-write .searchbar-container{
