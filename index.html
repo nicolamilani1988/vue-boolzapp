@@ -28,13 +28,13 @@
 
 <body>
 
-    <div id="app" class="container">
+    <div id="app" class="container" :class="isBgLight == true ? 'white-theme' : 'less-dark-theme'" >
 
         <!-- barra laterale -->
         <nav id="contact-section">
 
             <!-- parte utente -->
-            <section id="user-section" class="active-user" v-if="!isAddbarVisible">
+            <section :class="isBgLight == true ? '' : 'less-dark-theme'" id="user-section" class="active-user" v-if="!isAddbarVisible">
                 <img class="icon" src="./img/me.jpg" alt="">
                 <div>
                     <i class="fas fa-circle-notch"></i>
@@ -54,7 +54,7 @@
             </transition>    
 
             <!-- barra ricerca contatti -->
-            <section id="navbar-searchbar">
+            <section id="navbar-searchbar" :class="isBgLight == true ? 'light-theme' : 'dark-theme'">
                 <div class="searchbar-container">
                     <i class="fas fa-search"></i>
                     <input class="search-bar"  type="text" v-model="userSearch" placeholder="Cerca la chat">
@@ -64,7 +64,7 @@
             <!-- contatti -->
             <section class= "contact-list">
                 <ul>
-                    <li v-if="elem['name'].toLowerCase().includes(userSearch.toLowerCase())" class="contact" :class="elem['name'] == activeChat['name'] ? 'active' : ''" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
+                    <li :class="isBgLight == true ? 'white-theme' : 'less-dark-theme'" v-if="elem['name'].toLowerCase().includes(userSearch.toLowerCase())" class="contact" :class="elem['name'] == activeChat['name'] ? 'active' : ''" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
                         <!-- user logo -->
                         <div>
                             <img class="icon" :src="'./img/pic'+elem.avatar+'.jpg'" alt="">
@@ -107,10 +107,10 @@
             </section>
             
             <!-- barra altro utente attivo -->
-            <section class="active-user" @mouseleave="isMsgBarVisible = false">
+            <section class="active-user" @mouseleave="isMsgBarVisible = false" :class="isBgLight == true ? '' : 'less-dark-theme'">
                 <div>
                     <img class="icon" :src="'./img/pic'+activeChat.avatar+'.jpg'" alt="">
-                    <span>{{activeChat['name']}}</span>
+                    <span :class="isBgLight == true ? '' : 'grey-text'">{{activeChat['name']}}</span>
                 </div>
                 <div>
                     <i class="fas fa-video"></i>
@@ -176,7 +176,7 @@
             </section>
 
             <!-- scrittura messaggi -->
-            <section id="message-write">
+            <section id="message-write" :class="isBgLight == true ? 'light-theme' : 'dark-theme'">
                 <div>
                     <i class="far fa-laugh"></i>
                 </div>
