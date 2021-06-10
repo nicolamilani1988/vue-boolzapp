@@ -213,11 +213,13 @@ main .active-user .dropdown-menu{
     overflow-y: auto;
     margin-top: 70px;
     margin-bottom: 65px;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 #message-view>div{
     width: 80%;
-    margin:auto;
+    margin: 0 auto;
 }
 
 #message-view>div li{

@@ -13,22 +13,22 @@ function init(){
                     messages: [
                         {
                             date: '10/01/2020 15:10:55',
-                            text: "We must only discuss work-related things",
+                            text: "You can consider this as my retirement from comedy",
                             status: 'received'
                         },
                         {
                             date: '10/01/2020 15:11:55',
-                            text: "This is my retirement from comedy.I will no longer do any of old jokes.",
+                            text: "In the future, I will no longer use any of these jokes",
                             status: 'received'
                         },
                         {
-                            date: '10/01/2020 15:12:55',
-                            text: "Does that include 'That's What She Said'?",
+                            date: '10/01/2020 15:13:55',
+                            text: "Does that include 'That's What She Said?'",
                             status: 'sent'
                         },
                         {
                             date: '10/01/2020 15:19:55',
-                            text: "Yesh.",
+                            text: "Yeesh",
                             status: 'received'
                         },
                         {
@@ -132,19 +132,44 @@ function init(){
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
-                            text: "That's really hard. Do you think you can go all day?",
+                            text: "I'd like to do another version to bring more color",
                             status: 'sent'
                         },
                         {
                             date: '10/01/2020 15:50:00',
-                            text: "Well, you always left me satisfied and smiling",
+                            text: "I like it. I like it a lot, you have a real talent about this stuff.",
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 15:55:55',
+                            text: "Thanks",
                             status: 'sent'
                         },
                         {
                             date: '10/01/2020 16:15:22',
-                            text: "I'm fine",
+                            text: "I'd love to talk to you about it more. Do you wan to go out to dinner tonight ?",
                             status: 'received'
-                        }
+                        },
+                        {
+                            date: '10/01/2020 16:45:22',
+                            text: "No...um..I'm dating Jim",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 16:55:22',
+                            text: "Ah ah..You're kidding",
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 17:05:22',
+                            text: "No, we're together actually",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 17:09:22',
+                            text: "That's great..awesome",
+                            status: 'received'
+                        },
                     ],
                 },
                 {
@@ -154,19 +179,44 @@ function init(){
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
-                            text: "That's really hard. Do you think you can go all day?",
-                            status: 'sent'
+                            text: "I'd like to do another version to bring more color",
+                            status: 'received'
                         },
                         {
                             date: '10/01/2020 15:50:00',
-                            text: "Well, you always left me satisfied and smiling",
+                            text: "I like it. I like it a lot, you have a real talent about this stuff.",
                             status: 'sent'
                         },
                         {
-                            date: '10/01/2020 20:55:22',
-                            text: "Well",
+                            date: '10/01/2020 15:55:55',
+                            text: "Thanks",
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 16:15:22',
+                            text: "I'd love to talk to you about it more. Do you wan to go out to dinner tonight ?",
                             status: 'sent'
-                        }
+                        },
+                        {
+                            date: '10/01/2020 16:45:22',
+                            text: "No...um..I'm dating Jim",
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 16:55:22',
+                            text: "Ah ah..You're kidding",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 17:05:22',
+                            text: "No, we're together actually",
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 17:09:22',
+                            text: "That's great..awesome",
+                            status: 'sent'
+                        },
                     ],
                 }, 
                 {
@@ -176,62 +226,92 @@ function init(){
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
-                            text: "That's really hard. Do you think you can go all day?",
+                            text: "Hello, this is Dwight Schrute from Dunder-Mifflin Paper Company.",
                             status: 'sent'
                         },
                         {
-                            date: '10/01/2020 14:59:00',
-                            text: "Well, you always left me satisfied and smiling",
+                            date: '10/01/2020 15:59:00',
+                            text: "Oh, that's great because I need paper.",
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 16:30:55',
+                            text: "Excellent,then you are in luck because we are having a limited time offer on everything",
                             status: 'sent'
-                        }
+                        },
+                        {
+                            date: '10/01/2020 16:46:00',
+                            text: "Wow,this is my lucky day",
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 16:47:55',
+                            text: "What is your name?",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 16:49:00',
+                            text: "I am Bill Buttlicker",
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 16:51:55',
+                            text: "Really?That is your name?",
+                            status: 'sent'
+                        },
+                        {
+                            date: '10/01/2020 16:52:55',
+                            text: "How dare you?",
+                            status: 'received'
+                        },
+                        {
+                            date: '10/01/2020 16:53:55',
+                            text: "My family built this country by the way!!",
+                            status: 'received'
+                        },
                     ],
                 }, 
-                {
-                    name: 'Kelly',
-                    avatar: '_8',
-                    visible: true,
-                    messages: [
-                        {
-                            date: '10/01/2020 15:30:55',
-                            text: "That's really hard. Do you think you can go all day?",
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 09:20:00',
-                            text: "I am not done",
-                            status: 'received'
-                        }
-                    ],
-                }, 
-                {
-                    name: 'Oscar',
-                    avatar: '_9',
-                    visible: true,
-                    messages: [
-                        {
-                            date: '10/01/2020 15:30:55',
-                            text: "That's really hard. Do you think you can go all day?",
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 21:00:00',
-                            text: "Thank you",
-                            status: 'received'
-                        }
-                    ],
-                },  
+                // {
+                //     name: 'Kelly',
+                //     avatar: '_8',
+                //     visible: true,
+                //     messages: [
+                //         {
+                //             date: '10/01/2020 15:30:55',
+                //             text: "That's really hard. Do you think you can go all day?",
+                //             status: 'sent'
+                //         },
+                //         {
+                //             date: '10/01/2020 09:20:00',
+                //             text: "I am not done",
+                //             status: 'received'
+                //         }
+                //     ],
+                // }, 
+                // {
+                //     name: 'Oscar',
+                //     avatar: '_9',
+                //     visible: true,
+                //     messages: [
+                //         {
+                //             date: '10/01/2020 15:30:55',
+                //             text: "That's really hard. Do you think you can go all day?",
+                //             status: 'sent'
+                //         },
+                //         {
+                //             date: '10/01/2020 21:00:00',
+                //             text: "Thank you",
+                //             status: 'received'
+                //         }
+                //     ],
+                // },  
                 {
                     name: 'Creed',
                     avatar: '_10',
                     visible: true,
                     messages: [
                         {
-                            date: '10/01/2020 15:30:55',
-                            text: "That's really hard. Do you think you can go all day?",
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 09:50:00',
+                            date: '30/01/2020 09:50:00',
                             text: "Bobbity",
                             status: 'received'
                         }
@@ -272,11 +352,12 @@ function init(){
 
             getDate : function(data){ // elaboro date con formato corretto
                 const currentdate = data; 
-                let date = currentdate.getDate() + "/"
+                let date = ((currentdate.getDate()<10 ? '0':'')+currentdate.getDate()) + "/"
                 + (((currentdate.getMonth()+1)<10 ? '0':'')+ (currentdate.getMonth()+1))  + "/" 
                 + currentdate.getFullYear() + " "  
                 + currentdate.getHours() + ":"  
                 + ((currentdate.getMinutes()<10 ?'0':'')+currentdate.getMinutes()) + ":" + ((currentdate.getSeconds()<10 ?'0':'')+currentdate.getSeconds());
+                console.log(date);
                 return date;
             },
 
