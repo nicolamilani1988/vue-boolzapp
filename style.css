@@ -100,7 +100,7 @@ opacity: 0;
     position: relative;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid lightslategray;
+
     /* debug */
 }
 
@@ -110,10 +110,6 @@ nav .active-user, nav #add-contact{
     right: calc(100% - 400px);
 }
 
-nav .active-user{
-    border-right: 1px solid lightslategray;
-}
-
 #navbar-searchbar{
     background-color: #ECEEED;
     padding: 10px;
@@ -121,14 +117,11 @@ nav .active-user{
     top: 70px;
     right: calc(100% - 400px);
     left:0;
-    border-right: 1px solid lightslategray;
 }
 
-.contact-list{
-    overflow-y: auto;
+.contact-list{   
     margin-top: 129px;
     flex-grow: 1;
-    height: calc(100% - 128px)
 }
 
 .contact{
@@ -154,12 +147,15 @@ nav .active-user{
 } 
 
 
+
+
 /* REGOLE MAIN */
 main{
     position: relative;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    border-left: 1px solid lightslategray;
 }
 
 /* regole prima sezione main: schermata start */
@@ -192,6 +188,7 @@ main .active-user{
     right:0;
     left: 400px;
     z-index: 19;
+    border-left: 1px solid lightslategray;
 }
 
 .vertical-bar{
@@ -210,7 +207,9 @@ main .active-user .dropdown-menu{
 #message-view{
     flex-grow: 1;
     padding: 20px 0;
+    min-height: calc(100% - 135px);
     overflow-y: auto;
+    
     margin-top: 70px;
     margin-bottom: 65px;
     display: flex;
@@ -220,6 +219,7 @@ main .active-user .dropdown-menu{
 #message-view>div{
     width: 80%;
     margin: 0 auto;
+    
 }
 
 #message-view>div li{
@@ -323,6 +323,7 @@ main .active-user .dropdown-menu{
     right: 0;
     left: 400px;
     height: 65px;
+    border-left: 1px solid lightslategray;
 }
 
 #message-write .searchbar-container{
