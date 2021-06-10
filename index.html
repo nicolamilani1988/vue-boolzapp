@@ -1,231 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- font awsome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" />
+    <link rel="icon" type="image/png" href="./img/icon.png"/>
+    <title>Boolzapp</title>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- VueJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- dayJS -->
+    <script src="https://unpkg.com/dayjs@1.8.20/dayjs.min.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.20/plugin/customParseFormat.js"></script>
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap" rel="stylesheet">
-    <title>Booltsapp Web</title>
-    <!-- link vueJs -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <!-- axio vuejs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
-    <!-- link my js -->
-    <script src="js/main.js"></script>
-    <!-- link my css -->
-    <link rel="stylesheet" href="css/master.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- my css -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- my script -->
+    <script src="./script.js"></script>
 </head>
 
 <body>
-    <div id="app" :class="(dark == true) ? 'container-night' : '' ">
-        <!--container whatsapp  -->
-        <div id="container-webapp">
-            <!-- container lato sinistro lista chat -->
-            <div class="chat-list" :class="(dark == true) ? 'dark' : '' ">
-                <!-- container top chat list -->
-                <div class="header-chatList">
-                    <!-- container img utente e icon impostazioni -->
-                    <div class="content-user" :class="(dark == true) ? 'night' : '' ">
-                        <img src="img/goblin.png" alt="">
-                        <i class="fas fa-moon" @click="darkMode"></i>
-                        <div>
-                            <i class="fas fa-circle-notch"></i>
-                            <i class="fas fa-comment-alt"></i>
-                            <i class="fas fa-ellipsis-v" @click="getRandom"></i>
-                        </div>
-                    </div>
-                    <!-- container attiva notifiche -->
-                    <div class="content-notified" :class="(dark == true) ? 'darkblue' : '' ">
-                        <i class="fas fa-bell-slash" :class="(dark == true) ? 'grey' : '' "></i>
-                        <div>
-                            <h4 :class="(dark == true) ? 'grey' : '' ">
-                                Get notified of new messages
-                            </h4>
-                            <span :class="(dark == true) ? 'grey' : '' ">
-                                Turn on desktop notifications
-                            </span>
-                        </div>
-                    </div>
-                    <!-- container input per ricerca chat -->
-                    <div class="content-search-bar" :class="(dark == true) ? 'night' : '' ">
-                        <div class="searchbar" :class="(dark == true) ? 'dark' : '' ">
-                            <i class="fas fa-search" v-if="(searchName == '')"></i>
-                            <i class="fas fa-arrow-left" v-else @click="backSearch"></i>
-                            <input type="text" placeholder="Search of start new chat" v-model="searchName"
-                                :class="(dark == true) ? 'change-input' : ''">
-                        </div>
-                    </div>
-                </div>
-                <!-- corpo centrare lista chat -->
-                <div class="main-chatList">
-                    <ul>
-                        <!-- ciclo di vuejs per creare tanti li quanti elementi array in js -->
-                        <li v-for="elem in filteredContacts" @click="clickChat(elem)">
-                            <img :src="elem.img" alt="">
-                            <div class="content-info">
-                                <div class="user-text">
-                                    <h4 v-html="$options.filters.colorCharEqual(elem.name, searchName)"
-                                        :class="(dark == true) ? 'text-white' : '' ">
-                                    </h4>
-                                    <span v-if="(elem.message.length >= 1)">
-                                        {{elem.message[elem.message.length - 1].text.slice(0, 35)}}
-                                        <span v-if="(elem.message[elem.message.length - 1].text.length > 35)">...</span>
-                                    </span>
-                                    <span v-else>
-                                        {{textEmpty}}
-                                    </span>
-                                </div>
-                                <div class="date" v-if="(elem.message.length >= 1)">
-                                    {{elem.message[elem.message.length - 1].hour.slice(0, 5)}}
-                                </div>
-                                <div class="date" v-else>
-                                    {{hourEmpty}}
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- container sezione chat -->
-            <div class="chat">
-                <!-- container conversazione chat  -->
-                <div class="container-conversation" v-if="activeContact">
-                    <!-- container top conversazione  -->
-                    <div class="header-conversation" :class="(dark == true) ? 'night' : '' ">
-                        <!-- container info chat che cambia in base al click -->
-                        <div class="info-contact">
-                            <img :src="activeContact.img" alt="">
-                            <h4 :class="(dark == true) ? 'text-white' : '' ">{{activeContact.name}}</h4>
-                        </div>
-                        <!-- container icons setting -->
-                        <div class="settings">
-                            <i class="fas fa-search"></i>
-                            <i class="fas fa-paperclip"></i>
-                            <i class="fas fa-ellipsis-v"></i>
-                        </div>
-                    </div>
-                    <!-- corpo centrale conversazione -->
 
-                    <div class="main-conversation" @click="closeDropDown" :class="(dark == true) ? 'filter-dark' : '' ">
-                        <div class="content-msg">
-                            <ul id="chatScroll">
-                                <!-- ciclo per stampare tutti i mex contenenti in array usando il msg.status (lo status è uguale alla key in object array message e la key è uguale alla classe in css) -->
-                                <li class="message"
-                                    :class="[(msg.status == 'sent') ? 'sent' : '', (dark == true) ? 'green' : '']"
-                                    v-for="(msg, indexMsg) in activeContact.message" @mouseover="indMsg(msg, indexMsg)"
-                                    @mouseenter="hoverChevron(msg)" v-if="(msg.status == 'sent')">
-                                    <div class="content-text-msg">
-                                        <span v-html="msg.text">
-                                        </span>
-                                        <!-- sezione dropdown -->
-                                        <i class="fas fa-chevron-down" @click="clickChevron(msg)"
-                                            :class="(msg.chevron) ? 'active' : ''" @click.stop>
-                                            <ul class="dropdown"
-                                                :class="[(msg.dropDown) ? 'active' : '', (dark == true) ? 'night' : '' ]">
-                                                <li v-for="(elem, index) in listaDropDown"
-                                                    @click="removeMsg(msg,index),  msgImportant(msg, index)">
-                                                    {{elem}}
-                                                </li>
-                                            </ul>
-                                        </i>
-                                    </div>
-                                    <!-- sezione ora messaggio -->
-                                    <div class="hours">
-                                        <i class="fas fa-star" :class="(msg.msgKey) ? 'active' : '' "></i>
-                                        <span>
-                                            {{msg.hour.slice(0, 5)}}
-                                        </span>
-                                        <img src="img/spunte.png" alt="">
-                                    </div>
-                                </li>
-                                <li class="message"
-                                    :class="[(msg.status == 'received') ? 'received' : '', (dark == true) ? 'night' : '']"
-                                    @mouseover="indMsg(msg, indexMsg)" @mouseenter="hoverChevron(msg)" v-else>
-                                    <div class="content-text-msg">
-                                        <span v-html="msg.text">
-                                        </span>
-                                        <!-- sezione dropdown -->
-                                        <i class="fas fa-chevron-down" @click="clickChevron(msg)"
-                                            :class="(msg.chevron) ? 'active' : ''" @click.stop>
-                                            <ul class="dropdown"
-                                                :class="[(msg.dropDown) ? 'active' : '', (dark == true) ? 'night' : '' ]">
-                                                <li v-for="(elem, index) in listaDropDown"
-                                                    @click="removeMsg(msg,index),  msgImportant(msg, index)">
-                                                    {{elem}}
-                                                </li>
-                                            </ul>
-                                        </i>
-                                    </div>
-                                    <!-- sezione ora messaggio -->
-                                    <div class="hours">
-                                        <i class="fas fa-star" :class="(msg.msgKey) ? 'active' : '' "></i>
-                                        <span>
-                                            {{msg.hour.slice(0, 5)}}
-                                        </span>
-                                        <img src="img/spunte.png" alt="">
-                                    </div>
-                                </li>
+    <div id="app" class="container">
 
-                            </ul>
-                        </div>
+        <!-- barra laterale -->
+        <nav id="contact-section">
+
+            <!-- parte utente -->
+            <section id="user-section" class="active-user" v-if="!isAddbarVisible">
+                <img class="icon" src="./img/me.jpg" alt="">
+                <div>
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-plus" @click="isAddbarVisible = !isAddbarVisible" style="cursor:pointer"></i>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>             
+            </section>
+
+            <!-- BONUS : Aggiungi contatto alla lista -->
+            <transition name="fade">
+                <section id="add-contact" v-if="isAddbarVisible" @mouseleave="isAddbarVisible = !isAddbarVisible">
+                    <img class="icon"  src="./img/pic_anonym.jpg" alt="">
+                    <div class="searchbar-container">
+                        <input class="search-bar" type="text" v-model= "newName" @keyup.enter="addContact" placeholder="Scrivi il nome e premi invio">
                     </div>
-                    <!-- container footer  -->
-                    <div class="footer-conversation" :class="(dark == true) ? 'night' : '' ">
-                        <!-- button emoticon -->
-                        <i class="fas fa-smile" @click="clickEmoticonsMenu">
-                            <!-- container emoticon nascosto che si apre al click -->
-                            <div id="content-emoticon"
-                                :class="[(emoticonDisplay) ? 'active' : '', (dark == true) ? 'night' : '']">
-                                <!-- input per fare ricerca degli emoticon -->
-                                <div>
-                                    <input type="text" placeholder="Cerca emoji" @click.stop ref="inputFocus2"
-                                        v-model="searchEmo" :class="(dark == true) ? 'dark' : '' ">
-                                </div>
-                                <ul>
-                                    <!-- ciclo per stampare lista emoticon da js il v-html serve per fare vedere emoticon e non l'entity code
-                                     -->
-                                    <li v-for="elem in filteredEmoticons" @click="clickEmoticon(elem)" @click.stop >
-                                        {{elem.character}}
-                                    </li>
-                                </ul>
-                            </div>
-                        </i>
-                        <i class="fas fa-paperclip"></i>
-                        <input type="text" placeholder="Type a message..." v-model="newMsg" @keyup.enter="addMsgSent"
-                            ref="inputFocus" :class="(dark == true) ? 'change-input' : '' ">
-                        <!-- condizione che fa switchare microfono a immagine aereoplanino in base al cambio valore del data newMsg -->
-                        <i class="fas fa-microphone" v-if="(newMsg == '')"></i>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="imgsvg" @click="addMsgSent"
-                            v-else>
-                            <path fill="currentColor"
-                                d="M1.101 21.757L23.8 12.028 1.101 2.3l.011 7.912 13.623 1.816-13.623 1.817-.011 7.912z">
-                            </path>
-                        </svg>
-                    </div>
+                </section>
+            </transition>    
+
+            <!-- barra ricerca contatti -->
+            <section id="navbar-searchbar">
+                <div class="searchbar-container">
+                    <i class="fas fa-search"></i>
+                    <input class="search-bar"  type="text" v-model="userSearch" placeholder="Cerca la chat">
                 </div>
-                <!-- container pagina prima del click su chat a scelta-->
-                <div class="conversation-unopened" v-else :class="(dark == true) ? 'lightdark' : ''">
+            </section>
+
+            <!-- contatti -->
+            <section class= "contact-list">
+                <ul>
+                    <li v-if="elem['name'].toLowerCase().includes(userSearch.toLowerCase())" class="contact" :class="elem['name'] == activeChat['name'] ? 'active' : ''" @click="getActiveChat(index)" v-for="(elem, index) in contacts">
+                        <!-- user logo -->
+                        <div>
+                            <img class="icon" :src="'./img/pic'+elem.avatar+'.jpg'" alt="">
+                        </div>
+                        <!-- user name +msg -->
+                        <div>
+                            <p>{{elem['name']}}</p>
+                            <p class="small-text" >
+                                <span v-if="elem['messages'][elem['messages'].length-1]['status'] == 'sent'"><i class="fas fa-check-double"></i></span>
+                                <span v-else>{{elem['name']}}:</span>
+                                <span>{{lastMessage(elem)}}</span>
+                            </p>
+                        </div>
+                        <!-- msg-hour -->
+                        <div>
+                            <p class="small-text">{{lastDate(elem) | dateFormat}}</p>
+                        </div>
+                    </li>
+                </ul>
+
+            </section>
+           
+        </nav>
+
+
+        <!-- parte centrale -->
+        <main>
+            
+            <!-- schermata apertura app -->
+            <section id="start-background" :class="startTheme">
+                <div>
+                    <div id="theme-img-container">
+                        <img src="./img/start-theme.jpg" alt="">
+                    </div>
                     <div>
-                        <img src="img/smartphone.png" alt="" v-if="(dark == false)">
-                        <img src="img/smartphone-dark.png" alt="" v-else>
-                        <h2>
-                            Keep your phone connected
-                        </h2>
-                        <h3>
-                            CREATED by JUMBOTRON &hearts;
-                        </h3>
-                    </div>
+                        <h1>Mantieni il telefono connesso</h1>
+                        <p>Boolzap non si collega al tuo telefono, puoi solo scorrere le chat dei personaggi di The Office</p>
+                    </div>             
+                </div>    
+            </section>
+            
+            <!-- barra altro utente attivo -->
+            <section class="active-user" @mouseleave="isMsgBarVisible = false">
+                <div>
+                    <img class="icon" :src="'./img/pic'+activeChat.avatar+'.jpg'" alt="">
+                    <span>{{activeChat['name']}}</span>
                 </div>
-            </div>
-        </div>
+                <div>
+                    <i class="fas fa-video"></i>
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="vertical-bar"></div>
+                    <transition name="fade">
+                        <div v-if="isMsgBarVisible" class="searchbar-container">
+                            <input  class="search-bar" type="text" placeholder="Cerca messaggi e premi invio" v-model="msgSearch" @keyup.enter="pickMsg">
+                        </div>
+                    </transition>               
+                    <i class="fas fa-search" @click="isMsgBarVisible = !isMsgBarVisible" style="cursor:pointer"></i>
+                    <i class="fas fa-ellipsis-h" style="cursor:pointer" @click="isSettingsVisible = !isSettingsVisible"></i>
+                    <!-- BONUS: settings dropdown-menu -->
+                    <transition name="fade-away">
+                        <div class="dropdown-menu" v-if="isSettingsVisible" @mouseleave = "isSettingsVisible = false">                          
+                            <p @click="deleteAllMsg">Svuota chat</p>
+                            <p @click="deleteContact">Elimina contatto </p>
+                            <p @click="isBgLight = !isBgLight">Cambia sfondo</p>
+                        </div>
+                    </transition>    
+                </div>
+            </section>
+
+            <!-- visualizzazione messaggi -->
+            <section id="message-view" :class="isBgLight == true ? 'bg-img-light' : 'bg-img-dark'">            
+                <div>                                     
+                    <ul>
+                        <li v-for="(elem,index) in activeChat['messages']" :class="elem['status']">
+                            <div class="chat-message">
+                                <!-- user-pic -->
+                                <div>
+                                    <img v-if="elem['status'] == 'received'" :src="'./img/pic'+activeChat['avatar']+'.jpg'" alt="" class="icon" >
+                                    <img v-else :src="'./img/me.jpg'" alt="" class="icon" >  
+                                </div>   
+                                <!-- user-message -->
+                                <div :class="pickedMsg.includes(elem['text'].toLowerCase()) ?'picked-message' : ''">{{elem['text']}}</div>
+                                <!-- data -->
+                                <div>
+                                    <span class="small-text">
+                                        {{elem['date'] | dateFormat}} 
+                                        <i v-if ="elem['status'] == 'sent'" class="fas fa-check-double"></i>
+                                    </span>
+                                </div>
+                                <!-- freccia del dropdown-menu -->
+                                <i @click="showMenu(elem)" class="fas fa-chevron-down"></i>
+                                <!-- menu tendina nascosto -->
+                                <transition name="fade-away">
+                                    <div v-if="elem === activeMsg && isMsgMenuVisible" class="dropdown-menu" @mouseleave="isMsgMenuVisible = false">
+                                        <p @click= "deleteMsg(index)">Cancella messaggio</p>
+                                        <p @click= "infoMsg(index)">Info messaggio</p>
+                                    </div>
+                                    <!-- BONUS: info messaggio selezionato -->
+                                    <div v-if="elem === activeMsg && isInfoVisible" class="dropdown-menu" @mouseleave="isInfoVisible = false">
+                                        <div>Messaggio inviato il {{elem['date'] | dayFormat}} alle {{elem['date'] | dateFormat}}</div>
+                                        <div v-if="elem['status'] == 'sent'">Messaggio inviato da: Me</div>
+                                        <div v-else>Messaggio inviato da: {{activeChat['name']}}</div>
+                                    </div>
+                                </transition>                               
+                            </div>                         
+                        </li>
+                    </ul>                  
+                </div>
+            </section>
+
+            <!-- scrittura messaggi -->
+            <section id="message-write">
+                <div>
+                    <i class="far fa-laugh"></i>
+                </div>
+                <div>    
+                    <i class="fas fa-paperclip"></i>
+                </div>
+                <div class="searchbar-container">
+                    <input class="search-bar" type="text" @keyup.enter="addText" v-model="newText" placeholder="Scrivi un messaggio...">
+                </div>
+                <div>
+                    <i class="fas fa-microphone"></i>
+                </div>
+            </section>
+
+        </main>
+
     </div>
+  
 </body>
 
 </html>
